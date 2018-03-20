@@ -4,12 +4,13 @@ console.log('koko');
 
 
 var gCurrImg = '';
+var gKeywordCount;
 
 
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
-    keywords: ['happy']
+    keywords: ['happy', 'cat']
 },
 {
     id: 2,
@@ -25,6 +26,8 @@ var ctx;
 
 
 renderImgs();
+var flatened = flatten(gImgs);
+gKeywordCount = findModes(flatened);
 
 
 
@@ -77,4 +80,33 @@ function drawImage(imageObj) {
 }
 
 
+//flattens the object by keywords only
+function flatten(values) {
+    var valuesMap = values.reduce(function (acc, value) {
+        return acc.concat(value.keywords);
+    }, []);
+return valuesMap;
+}
 
+//find modes by key and value
+function findModes(values) {
+    var valueRepeatsMap = values.reduce(function (acc, value) {
+        if (!acc[value]) acc[value] = 1;
+        else acc[value]++;
+        return acc;
+    }, {})
+    
+    var max = -Infinity;
+    for (var key in valueRepeatsMap) {
+        if (valueRepeatsMap[key] > max) {
+            max = valueRepeatsMap[key];
+        }
+    }
+    var modes = []
+    for (var key in valueRepeatsMap) {
+        if (valueRepeatsMap[key] === max) {
+            modes.push(+key);
+        }
+    }
+    return valueRepeatsMap;
+}
