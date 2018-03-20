@@ -141,7 +141,7 @@ h1 {
 button {
   cursor: pointer; }
 
-.images-wrapper {
+.img-wrapper {
   height: 100%; }
 
 .grid {
@@ -171,28 +171,28 @@ button {
 
 
 .img001 {
-  background: url("../images/image-001.jpg");
+  background: url("../img/image-001.jpg");
   background-position: center center;
   background-size: cover;
   /* height:380px; */
 }
 
 .img002 {
-  background: url("../images/image-002.jpg");
+  background: url("../img/image-002.jpg");
   background-position: center center;
   background-size: cover;
   /* height:380px; */
 } 
 
 .img003 {
-    background: url("../images/image-003.jpg");
+    background: url("../img/image-003.jpg");
     background-position: center center;
     background-size: cover;
     /* height:300px; */
 }   
     
 header {
-  background: url("../images/header-bg.gif");
+  background: url("../img/header-bg.gif");
   height: 130px;
   color: #fff;
   font-family: latobold, sans-serif; }
@@ -274,7 +274,7 @@ header {
 
 .hero {
   height: 23.4375rem;
-  background-image: url("../images/hero.jpg");
+  background-image: url("../img/hero.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
