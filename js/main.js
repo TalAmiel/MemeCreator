@@ -1,5 +1,6 @@
 
 'use strict';
+console.log ('koko');
 
 
 var gImgs = [{
@@ -13,28 +14,31 @@ var gImgs = [{
     keywords: ['happy']
 }
 ]
+console.log ('gImgs' , gImgs);
 
 // This is the same as <body onload="">
 
 
+renderImgs();
 
-function init() {
-    renderImgs();
-}
 
 
 
 function renderKeywords() {
 }
 
-function renderImages(gImgs) {
+function renderImgs() {
     var elImgsContainer = document.querySelector('.imgs-container');
+    console.log ('imgcon' , elImgsContainer );
     var strHtml = '';
+    console.log ('gimgs2' ,gImgs);
     gImgs.forEach(function (img) {
-        strHtml += `
-                <div><img src="${'gImgs.url'}" </div>
-        `
+        strHtml += '<div ><img src="'+img.url+'"></div>'
+        console.log ('img.url' , img['url']);
     })
-    elTBody.html(strHtml);
+    console.log ('strHtml' , strHtml);
+    console.log ('elImgsContainer', elImgsContainer);
+    elImgsContainer.innerHTML= strHtml;
+    console.log ('elImgsContainer2', elImgsContainer);
 }
 
