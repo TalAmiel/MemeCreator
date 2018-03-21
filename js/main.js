@@ -9,7 +9,7 @@ var gKeywordCount;
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
-    keywords: ['happy' ,'koko']
+    keywords: ['happy', 'koko']
 },
 {
     id: 2,
@@ -39,33 +39,35 @@ var gImgs = [{
 ]
 console.log('gImgs', gImgs);
 
-var gMeme ={
+var gMeme = {
     selectedImgId: 5,
-    txts:[
+    txts: [
         {
-            line:'',
-            size: 20 ,
-            align:'left',
+            line: '',
+            size: 20,
+            height:40,
+            align: 'left',
             color: 'red'
         },
         {
-            line:'',
-            size: 20 ,
-            align:'left',
+            line: '',
+            size: 20,
+            height: 400,
+            align: 'left',
             color: 'red'
         },
 
     ]
 }
 
-console.log ('txts' , gMeme.txts[0].line);
+console.log('txts', gMeme.txts[0].line);
 //for canvas 
 var canvas;
 var ctx;
 // This is the same as <body onload="">
-function init (){
-var flatened = flatten(gImgs);
-renderImgs(gImgs);
+function init() {
+    var flatened = flatten(gImgs);
+    renderImgs(gImgs);
 
 }
 
@@ -73,7 +75,7 @@ function renderKeywords() {
 }
 
 function renderImgs(imgs) {
-       
+
     var elImgsContainer = document.querySelector('.imgs-container');
     console.log('imgcon', elImgsContainer);
     var strHtml = '';
@@ -89,57 +91,68 @@ function renderImgs(imgs) {
     console.log('elImgsContainer2', elImgsContainer);
 }
 
-function changeText (evt,id){
-    console.log ('koko');
+function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
-    
     renderCanvas();
-    renderMeme(id);
+    
+}
+function changeColor(evt,id){
+    gMeme.txts[id].color = evt.target.value;
 }
 
-function renderCanvas (){
+function renderCanvas() {
     canvas = document.querySelector('canvas');
     ctx = canvas.getContext('2d');
-    
+
     var imageObj = new Image();
     imageObj.src = gCurrImg.url;
-    ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
+    ctx.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
+    renderMeme();
 }
 
-function renderMeme(id){
+function renderMeme() {
     ctx.font = 'italic 40pt Calibri';
-    console.log ('gMeme.txts[0].line' , gMeme.txts[id].line);
-    console.log ('id ' , id);
-    if (id === 0) ctx.fillText(gMeme.txts[id].line,canvas.width / 2, 40);
-    else {
-        console.log ('id suppose 1');
-        ctx.fillText(gMeme.txts[id].line,canvas.width/2 , canvas.height-20);
-    } 
+    // console.log('gMeme.txts[0].line', gMeme.txts[id].line);
+    // console.log('id ', id);
+    renderLines();
+}
+function renderLines(){
+    var txts = gMeme.txts;
+    txts.forEach (function renderLine(txt){
+        ctx.font = 'italic 40pt Calibri';
+        ctx.color = 
+        ctx.fillText(txt.line,canvas.width / 2, txt.height);
+        console.log ('txt.line' , txt.line);
+        
+    })
 }
 
 
 
+// ctx.fillText(gMeme.txts[id].line,canvas.width / 2, 40);
+//     ctx.fillText(gMeme.txts[id].line,canvas.width/2 , canvas.height-20);
 
-function filterImgs(elWord){
+
+function filterImgs(elWord) {
     var inputText = elWord.value;
-    console.log ('elWord' ,elWord.value);
-     var shownImgs = gImgs.filter (function(img){
-       var isShowImg= img.keywords.some (function(keyword){
-            var res=true;
+    console.log('elWord', elWord.value);
+    var shownImgs = gImgs.filter(function (img) {
+        var isShowImg = img.keywords.some(function (keyword) {
+            var res = true;
             var findIndex = (keyword.indexOf(inputText));
-            if  (findIndex === -1) res= false;
+            if (findIndex === -1) res = false;
             return res;
         })
         return isShowImg
-     })
-     console.log ('shownImgs' , shownImgs);
-     renderImgs (shownImgs);
+    })
+    console.log('shownImgs', shownImgs);
+    renderImgs(shownImgs);
 }
 
 function imgSelected(id) {
     // var elMain = document.querySelector('main');
     // elMain.classList.add('hide');
-   
+
     // console.log(elMain);
     gCurrImg = gImgs.find(function (img) {
         console.log('img', img.id);
@@ -151,8 +164,8 @@ function imgSelected(id) {
     elMemePage.classList.add('show');
 }
 
-function updateMeme(){
-    
+function updateMeme() {
+
 }
 
 function showMemePage() {
@@ -161,10 +174,14 @@ function showMemePage() {
 }
 
 
-function deleteMemeText(idx){
-    var txts = gMeme.txts;
-    txts.splice(idx,1);
-}
+// function deleteMemeText(idx) {
+//     console.log ('koko');
+//     var txts = gMeme.txts;
+    
+//     txts.splice(idx, 1);
+//     console.log (txts);
+//     renderCanvas();
+// }
 
 //TODO: create init
 var flatened = flatten(gImgs);
@@ -173,35 +190,35 @@ findModes(flatened);
 
 //flattens the object by keywords only
 function flatten(values) {
-var valuesMap = values.reduce(function (acc, value) {
-    return acc.concat(value.keywords);
-}, []);
-return valuesMap;
+    var valuesMap = values.reduce(function (acc, value) {
+        return acc.concat(value.keywords);
+    }, []);
+    return valuesMap;
 }
 
 //find modes by key and value
 function findModes(values) {
-var valueRepeatsMap = values.reduce(function (acc, value) {
-    if (!acc[value]) acc[value] = 1;
-    else acc[value]++;
-    return acc;
-}, {})
+    var valueRepeatsMap = values.reduce(function (acc, value) {
+        if (!acc[value]) acc[value] = 1;
+        else acc[value]++;
+        return acc;
+    }, {})
 
-var max = -Infinity;
-for (var key in valueRepeatsMap) {
-    if (valueRepeatsMap[key] > max) {
-        max = valueRepeatsMap[key];
+    var max = -Infinity;
+    for (var key in valueRepeatsMap) {
+        if (valueRepeatsMap[key] > max) {
+            max = valueRepeatsMap[key];
+        }
     }
-}
-var modes = []
-for (var key in valueRepeatsMap) {
-    if (valueRepeatsMap[key] === max) {
-        modes.push(+key);
+    var modes = []
+    for (var key in valueRepeatsMap) {
+        if (valueRepeatsMap[key] === max) {
+            modes.push(+key);
+        }
     }
+    gKeywordCount = valueRepeatsMap;
 }
-gKeywordCount = valueRepeatsMap;
-}
-console.log ('gKeywordCount' , gKeywordCount);
+console.log('gKeywordCount', gKeywordCount);
 
 
 
@@ -215,7 +232,7 @@ console.log ('gKeywordCount' , gKeywordCount);
 //     ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
 // }
 
-    
+
 
 
 
