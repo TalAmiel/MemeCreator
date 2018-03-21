@@ -93,11 +93,14 @@ function showMemePage() {
 function renderCanvas(){
     canvas = document.querySelector('canvas');
     ctx = canvas.getContext('2d');
+    
     var imageObj = new Image();
+
     imageObj.onload = function () {
         drawImage(this);
     };
     imageObj.src = gCurrImg.url;
+    ctx.fillText('hello', 150,100);
 }
 
 function drawImage(imageObj) {
