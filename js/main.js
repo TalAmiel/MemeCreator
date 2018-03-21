@@ -82,9 +82,8 @@ function imgSelected(id) {
     showMemePage();
 }
 
-function updateMeme(this){
-    //update things
-    renderCanvas();
+function updateMeme(){
+    
 }
 
 function showMemePage() {
