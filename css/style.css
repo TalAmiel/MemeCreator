@@ -374,7 +374,6 @@ footer {
 
     canvas {
       border :1px solid red;
-      text-shadow: 2px 2px #FF0000;
       margin: 0 auto;
     }
      .imgs-container img{
@@ -391,6 +390,10 @@ footer {
      }
 
      .top-line-text{
+       width:350px;
+     }
+
+     .bottom-line-text{
        width:350px;
      }
      .searchBar{
@@ -414,6 +417,7 @@ footer {
       width: 24px;
       height:30px;    
     }
+    
     .text-shadow{
       text-shadow: 2px 1px;
     }

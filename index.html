@@ -71,24 +71,34 @@
                     
                 </div>
             </div>
-            <div  class = "bottom-line line-container" > 
-                    <div  class="enter-text">
-                            <input onkeyup="changeText(event,1)" type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
-                    </div>
-                    <div class="line-setup-opts flex space-between">
-                           <div class="delete line" onclick="deleteMemeText(0)" >
-                                <button class="opt-button"><i class="far fa-trash-alt"></i></button>
-                            </div>
-                            <div class="change-font-size">
-                                    <button class="opt-button" >	&#128474</button>
-                            </div >
-                        <div class="align-text flex justify-end ">
-                            <button class="opt-button"><i class="fas fa-align-left"></i></button>
-                            <button class="opt-button"><i class="fas fa-align-center"></i></button>
-                            <button class="opt-button"><i class="fas fa-align-right"></i></button>
+
+            <div  class = "bottom-line line-container flex column space-between" >
+                <div  class="enter-text">
+                        <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-bottom" placeholder="let go, and just meme it ..   "/>
+                </div>
+                <div class="line-setup-opts flex space-between">
+                       <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)" >
+                            <button class="opt-button"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                        <input title="Change color" type="color"  onchange="changeColor(event,1)" class="color-picker">
+                        <div class="change-font-size flex">
+                
+                            <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(1)" >&#128475</button>
+                            <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(1)">&#128474</button>
+
+                       
                         </div >
-                    </div>
-            </div>                   
+                        <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(1)">A</button>
+                    <div class="align-text flex justify-end ">
+                        <button title="Align left" class="opt-button" onclick="changeAlign('left',1)"><i class="fas fa-align-left"></i></button>
+                        <button title="Align center" class="opt-button" onclick="changeAlign('center',1)"><i class="fas fa-align-center"></i></button>
+                        <button title="Align right" class="opt-button" onclick="changeAlign('right',1)"><i class="fas fa-align-right"></i></button>
+                    </div >
+                    
+                    
+                </div>
+            </div>
+
         </div>
     </div> 
     <main class="container">
