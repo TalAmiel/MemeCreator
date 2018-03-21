@@ -79,29 +79,37 @@ function imgSelected(id) {
         console.log('id', id);
         return img.id === id;
     })
-    setCanvasImage();
+    showMemePage();
 }
 
-function setCanvasImage() {
-     canvas = document.querySelector('canvas');
-     ctx = canvas.getContext('2d');
+function updateMeme(this){
+    //update things
+    renderCanvas();
+}
+
+function showMemePage() {
+    //add class
+    renderCanvas();
+}
+function renderCanvas(){
+    canvas = document.querySelector('canvas');
+    ctx = canvas.getContext('2d');
     var imageObj = new Image();
     imageObj.onload = function () {
         drawImage(this);
     };
     imageObj.src = gCurrImg.url;
 }
+
 function drawImage(imageObj) {
-    var x = 0;//69;
-    var y = 0;//50;
+    var x = 0;
+    var y = 0;
     console.log('canvas',canvas.width);
-
-    ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.width);
-   
-
+    ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
+}
 
     
-}
+
 
 
 
