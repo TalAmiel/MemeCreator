@@ -4,30 +4,48 @@ console.log('koko');
 
 
 var gCurrImg = '';
-var gKeywordCount;
 
 
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
-    keywords: ['happy', 'cat']
+    keywords: ['happy']
 },
 {
     id: 2,
     url: 'img/meme2.jpg',
+    keywords: ['happy']
+},
+{
+    id: 3,
+    url: 'img/meme3.jpg',
+    keywords: ['happy']
+},
+{
+    id: 4,
+    url: 'img/meme4.jpg',
+    keywords: ['happy']
+},
+{
+    id: 5,
+    url: 'img/meme3.jpg',
+    keywords: ['happy']
+},
+{
+    id: 6,
+    url: 'img/meme4.jpg',
     keywords: ['happy']
 }
 ]
 console.log('gImgs', gImgs);
 
 //for canvas 
+var canvas;
 var ctx;
 // This is the same as <body onload="">
 
 
 renderImgs();
-var flatened = flatten(gImgs);
-gKeywordCount = findModes(flatened);
 
 
 
@@ -43,6 +61,7 @@ function renderImgs() {
     gImgs.forEach(function (img) {
         strHtml += '<div onclick="imgSelected(' + img.id + ')" ><img src="' + img.url + '"></div>'
         console.log('img.url', img['url']);
+        // strHtml += '<div style="background: url(/img/meme1.jpg);
     })
     console.log('strHtml', strHtml);
     console.log('elImgsContainer', elImgsContainer);
@@ -64,8 +83,8 @@ function imgSelected(id) {
 }
 
 function setCanvasImage() {
-    var elCanvas = document.querySelector('canvas');
-     ctx = elCanvas.getContext('2d');
+     canvas = document.querySelector('canvas');
+     ctx = canvas.getContext('2d');
     var imageObj = new Image();
     imageObj.onload = function () {
         drawImage(this);
@@ -75,38 +94,14 @@ function setCanvasImage() {
 function drawImage(imageObj) {
     var x = 0;//69;
     var y = 0;//50;
+    console.log('canvas',canvas.width);
 
-    ctx.drawImage(imageObj, x, y);
-}
+    ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.width);
+   
 
 
-//flattens the object by keywords only
-function flatten(values) {
-    var valuesMap = values.reduce(function (acc, value) {
-        return acc.concat(value.keywords);
-    }, []);
-return valuesMap;
-}
-
-//find modes by key and value
-function findModes(values) {
-    var valueRepeatsMap = values.reduce(function (acc, value) {
-        if (!acc[value]) acc[value] = 1;
-        else acc[value]++;
-        return acc;
-    }, {})
     
-    var max = -Infinity;
-    for (var key in valueRepeatsMap) {
-        if (valueRepeatsMap[key] > max) {
-            max = valueRepeatsMap[key];
-        }
-    }
-    var modes = []
-    for (var key in valueRepeatsMap) {
-        if (valueRepeatsMap[key] === max) {
-            modes.push(+key);
-        }
-    }
-    return valueRepeatsMap;
 }
+
+
+
