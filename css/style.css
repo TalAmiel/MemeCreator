@@ -374,7 +374,7 @@ footer {
 
     canvas {
       border :1px solid red;
-      
+      text-shadow: 2px 2px #FF0000;
       margin: 0 auto;
     }
      .imgs-container img{

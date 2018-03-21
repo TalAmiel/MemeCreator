@@ -44,24 +44,24 @@ var gMeme = {
             size: 20,
             height:40,
             align: 'right',
-            color: 'black'
+            color: 'black',
+            shadow: false
         },
         {
             line: '',
             size: 20,
             height: 400,
             align: 'left',
-            color: 'black'
+            color: 'black',
+            shadow: false
         },
 
     ]
 }
 
-console.log('txts', gMeme.txts[0].line);
-//for canvas 
 var canvas;
 var ctx;
-// This is the same as <body onload="">
+
 function init() {
     var flatened = flatten(gImgs);
     renderImgs(gImgs);
@@ -92,6 +92,8 @@ function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
     renderCanvas();
 }
+
+//doesnt change color
 function changeColor(evt,id){
     gMeme.txts[id].color = evt.target.value;
     console.log ('color 1' ,gMeme.txts[id].color );
@@ -114,6 +116,11 @@ function decreaseFont (id){
     console.log ('moshe');
     renderCanvas();
 }
+
+function textShadowToggle(id) {
+    (!gMeme.txts[id].shadow) ? gMeme.txts[id].shadow = true : gMeme.txts[id].shadow = false;;
+    renderCanvas();
+    }
 
 
 function renderCanvas() {
@@ -138,15 +145,16 @@ function renderLines(){
         ctx.font = txt.size+'px Calibri';
         // console.log ('ctx font', ctx.font);
         var align;
+        ctx.shadowColor="black";
         if (txt.align === 'left') align = -100;
         else if (txt.align === 'right') align = 100;
         else align=0;
         console.log ('align' , align);
+        (txt.shadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle =  txt.color;
         console.log ('colorddddddd' , txt.color);
         ctx.fillText(txt.line,canvas.width / 2 +align, txt.height);
         console.log ('txt.line' , txt.line);
-        
     })
 }
 
