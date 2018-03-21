@@ -95,20 +95,28 @@ function renderCanvas(){
     ctx = canvas.getContext('2d');
     
     var imageObj = new Image();
-
-    imageObj.onload = function () {
-        drawImage(this);
-    };
     imageObj.src = gCurrImg.url;
-    ctx.fillText('hello', 150,100);
+        ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
+        ctx.font = 'italic 40pt Calibri';
+      ctx.fillText('hello',canvas.width / 2, 70);
+      debugger;
+      var dataURL = canvas.toDataURL();
+      document.getElementById('canvasImg').src = dataURL;
+      
+
+ 
+      
 }
 
-function drawImage(imageObj) {
-    var x = 0;
-    var y = 0;
-    console.log('canvas',canvas.width);
-    ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
-}
+
+
+
+// function drawImage(imageObj) {
+//     var x = 0;
+//     var y = 0;
+//     console.log('canvas',canvas.width);
+//     ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
+// }
 
     
 
