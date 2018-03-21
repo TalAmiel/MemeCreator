@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PSD 2 HTML - Grid ex!</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -51,16 +53,36 @@
         </div>
 
     </main>
-    <!-- <div class="meme-page"> -->
+    <div class="meme-page flex space-between">
         <canvas id="myCanvas" width=500 height=500></canvas>
         </canvas>
-        <!-- <div class="setup-meme-container">
-            <div line>
-
+        <div class="meme-options-container">
+            <div  class = "top-line line-container flex column space-between" >
+                <div  class="enter-text">
+                        <input type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
+                </div>
+                <div class="line-setup-opts flex space-between">
+                       <div class="delete line" >
+                            <button class="opt-button"><i class="far fa-trash-alt"></i></button>
+                        </div>
+                        <div class="change-font-size">
+                                <button class="opt-button" >	&#128474</button>
+                        </div >
+                    <div class="align-text flex justify-end ">
+                        <button class="opt-button"><i class="fas fa-align-right"></i></button>
+                        <button class="opt-button"><i class="fas fa-align-center"></i></button>
+                        <button class="opt-button"><i class="fas fa-align-left"></i></button>
+                    </div >
+                    
+                    
+                </div>
             </div>
-
+            <div  class = "bottom-line line-container" > 
+                    <div  class="enter-text">a</div>
+                    <div class="line-setup-opts">b</div> 
+            </div>                   
         </div>
-    </div> -->
+    </div> 
     <footer>
 
         <section class="container">
@@ -81,6 +103,7 @@
             mainMenu.classList.toggle('open');
         }
     </script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="js\main.js"></script>
 </body>
 
