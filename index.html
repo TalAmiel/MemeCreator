@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>PSD 2 HTML - Grid ex!</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body onload="init()">
     
     <header>
         <section class="container header-wrapper flex align-center">
@@ -40,20 +39,8 @@
 
         </section>
     </header>
-
-    <main class="container">
-        <div class="imgs-container grid">try_contain</div>
-     
-        <div>
-            <h2>
-                search
-            </h2>
-            <h2>
-                 display img
-            </h2>
-        </div>
-
-    </main>
+    
+    
     <div class="meme-page flex space-between">
         <canvas id="myCanvas" width=500 height=500></canvas>
         </canvas>
@@ -63,16 +50,16 @@
                         <input type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
                 </div>
                 <div class="line-setup-opts flex space-between">
-                       <div class="delete line" >
+                       <div class="delete line" onclick="deleteMemeText(0)" >
                             <button class="opt-button"><i class="far fa-trash-alt"></i></button>
                         </div>
                         <div class="change-font-size">
                                 <button class="opt-button" >	&#128474</button>
                         </div >
                     <div class="align-text flex justify-end ">
-                        <button class="opt-button"><i class="fas fa-align-right"></i></button>
-                        <button class="opt-button"><i class="fas fa-align-center"></i></button>
                         <button class="opt-button"><i class="fas fa-align-left"></i></button>
+                        <button class="opt-button"><i class="fas fa-align-center"></i></button>
+                        <button class="opt-button"><i class="fas fa-align-right"></i></button>
                     </div >
                     
                     
@@ -84,6 +71,13 @@
             </div>                   
         </div>
     </div> 
+    <main class="container">
+            <div class=searchBar>
+                    <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
+            </div>
+            <div class="imgs-container grid">try_contain</div>
+         
+    </main>
     <footer>
 
         <section class="container">

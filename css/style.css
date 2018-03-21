@@ -366,9 +366,11 @@ footer {
     }
 
 
-    .hide{
+    /* .hide{
       display:none;
-    }
+    } */
+
+    
 
     canvas {
       border :1px solid red;
@@ -391,6 +393,24 @@ footer {
      .top-line-text{
        width:250px;
      }
+     .searchBar{
+       text-align: center;
+       margin-bottom:10px;
+       padding-bottom: 10px;
+       border-bottom:1px solid rgb(197, 194, 194)
+     }
+
+     .meme-page{
+       height:0px;
+       overflow:hidden;
+       transition: all 5s;
+     }
+     
+     .meme-page.show{
+       height:auto;
+    }
+
+     
 
      
 

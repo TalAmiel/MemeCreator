@@ -9,12 +9,12 @@ var gCurrImg = '';
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
-    keywords: ['happy']
+    keywords: ['happy' ,'koko']
 },
 {
     id: 2,
     url: 'img/meme2.jpg',
-    keywords: ['happy']
+    keywords: ['happy', 'momo']
 },
 {
     id: 3,
@@ -24,41 +24,52 @@ var gImgs = [{
 {
     id: 4,
     url: 'img/meme4.jpg',
-    keywords: ['happy']
+    keywords: ['sad']
 },
 {
     id: 5,
     url: 'img/meme3.jpg',
-    keywords: ['happy']
+    keywords: ['sad']
 },
 {
     id: 6,
     url: 'img/meme4.jpg',
-    keywords: ['happy']
+    keywords: ['sad']
 }
 ]
 console.log('gImgs', gImgs);
 
+var gMeme ={
+    selectedImgId: 5,
+    txts:[
+        {
+            line:'yoyo',
+            size: 20 ,
+            align:'left',
+            color: 'red'
+        }
+    ]
+}
+
+console.log ('txts' , gMeme.txts[0].line);
 //for canvas 
 var canvas;
 var ctx;
 // This is the same as <body onload="">
-
-
-renderImgs();
-
-
-
+function init (){
+renderImgs(gImgs);
+}
 
 function renderKeywords() {
 }
 
-function renderImgs() {
+function renderImgs(imgs) {
+       
     var elImgsContainer = document.querySelector('.imgs-container');
     console.log('imgcon', elImgsContainer);
     var strHtml = '';
-    console.log('gimgs2', gImgs);
-    gImgs.forEach(function (img) {
+    console.log('gimgs2', imgs);
+    imgs.forEach(function (img) {
         strHtml += '<div onclick="imgSelected(' + img.id + ')" ><img src="' + img.url + '"></div>'
         console.log('img.url', img['url']);
         // strHtml += '<div style="background: url(/img/meme1.jpg);
@@ -70,16 +81,35 @@ function renderImgs() {
 
 }
 
+function filterImgs(elWord){
+    var inputText = elWord.value;
+    console.log ('elWord' ,elWord.value);
+     var shownImgs = gImgs.filter (function(img){
+       var isShowImg= img.keywords.some (function(keyword){
+            var res=true;
+            var findIndex = (keyword.indexOf(inputText));
+            if  (findIndex === -1) res= false;
+            return res;
+        })
+        return isShowImg
+     })
+     console.log ('shownImgs' , shownImgs);
+     renderImgs (shownImgs);
+}
+
 function imgSelected(id) {
-    var elMain = document.querySelector('main');
-    elMain.classList.add('hide');
-    console.log(elMain);
+    // var elMain = document.querySelector('main');
+    // elMain.classList.add('hide');
+   
+    // console.log(elMain);
     gCurrImg = gImgs.find(function (img) {
         console.log('img', img.id);
         console.log('id', id);
         return img.id === id;
     })
     showMemePage();
+    var elMemePage = document.querySelector('.meme-page');
+    elMemePage.classList.add('show');
 }
 
 function updateMeme(){
@@ -101,11 +131,12 @@ function renderCanvas(){
       ctx.fillText('hello',canvas.width / 2, 70);
     //   debugger;
     //   var dataURL = canvas.toDataURL();
-    //   document.getElementById('canvasImg').src = dataURL;
-      
+    //   document.getElementById('canvasImg').src = dataURL;     
+}
 
- 
-      
+function deleteMemeText(idx){
+    var txts = gMeme.txts;
+    txts.splice(idx,1);
 }
 
 
