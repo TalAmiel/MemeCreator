@@ -2,7 +2,6 @@
 'use strict';
 console.log('koko');
 
-
 var gCurrImg = '';
 
 var gKeywordCount;
@@ -47,14 +46,14 @@ var gMeme = {
             size: 20,
             height:40,
             align: 'left',
-            color: 'red'
+            color: 'black'
         },
         {
             line: '',
             size: 20,
             height: 400,
             align: 'left',
-            color: 'red'
+            color: 'black'
         },
 
     ]
@@ -102,6 +101,23 @@ function changeColor(evt,id){
     renderCanvas();
 }
 
+function changeAlign(align,id){
+    console.log ('koko');
+    gMeme.txts[id].align = align;
+    renderCanvas();
+}
+function increaseFont (id){
+    gMeme.txts[id].size += 2;
+    renderCanvas();
+
+}
+function decreaseFont (id){
+    gMeme.txts[id].size -= 2;
+    console.log ('moshe');
+    renderCanvas();
+}
+
+
 function renderCanvas() {
     canvas = document.querySelector('canvas');
     ctx = canvas.getContext('2d');
@@ -121,10 +137,16 @@ function renderMeme() {
 function renderLines(){
     var txts = gMeme.txts;
     txts.forEach (function renderLine(txt){
-        ctx.font = 'italic 40pt Calibri';
+        ctx.font = txt.size+'px Calibri';
+        // console.log ('ctx font', ctx.font);
+        var align;
+        if (txt.align === 'left') align = -100;
+        else if (txt.align === 'right') align = 100;
+        else align=0;
+        console.log ('align' , align);
         ctx.fillStyle =  txt.color;
         console.log ('colorddddddd' , txt.color);
-        ctx.fillText(txt.line,canvas.width / 2, txt.height);
+        ctx.fillText(txt.line,canvas.width / 2 +align, txt.height);
         console.log ('txt.line' , txt.line);
         
     })

@@ -54,13 +54,18 @@
                             <button class="opt-button"><i class="far fa-trash-alt"></i></button>
                         </div>
                         <input type="color"  onchange="changeColor(event,0)" class="color-picker">
-                        <div class="change-font-size">
-                                <button class="opt-button" >	&#128474</button>
+                        <div class="change-font-size flex">
+                
+                            <button class="opt-button decrease-font-size" onclick="decreaseFont(0)" >&#128475</button>
+                            <button class="opt-button increase-font-size" onclick="increaseFont(0)">&#128474</button>
+
+                       
                         </div >
+                        <button class="opt-button text-shadow" onclick="textShadowToggle(0)">A</button>
                     <div class="align-text flex justify-end ">
-                        <button class="opt-button"><i class="fas fa-align-left"></i></button>
-                        <button class="opt-button"><i class="fas fa-align-center"></i></button>
-                        <button class="opt-button"><i class="fas fa-align-right"></i></button>
+                        <button class="opt-button" onclick="changeAlign('left',0)"><i class="fas fa-align-left"></i></button>
+                        <button class="opt-button" onclick="changeAlign('center',0)"><i class="fas fa-align-center"></i></button>
+                        <button class="opt-button" onclick="changeAlign('right',0)"><i class="fas fa-align-right"></i></button>
                     </div >
                     
                     
@@ -114,6 +119,7 @@
             mainMenu.classList.toggle('open');
         }
     </script>
+    <script  src="https://code.jquery.com/jquery-3.3.1.min.js"> </script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="js\main.js"></script>
 </body>
