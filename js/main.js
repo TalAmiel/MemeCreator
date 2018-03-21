@@ -94,10 +94,12 @@ function renderImgs(imgs) {
 function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
     renderCanvas();
-    
 }
 function changeColor(evt,id){
     gMeme.txts[id].color = evt.target.value;
+    console.log ('color 1' ,gMeme.txts[id].color );
+    console.log ('txt' ,gMeme.txts)
+    renderCanvas();
 }
 
 function renderCanvas() {
@@ -120,7 +122,8 @@ function renderLines(){
     var txts = gMeme.txts;
     txts.forEach (function renderLine(txt){
         ctx.font = 'italic 40pt Calibri';
-        ctx.color = 
+        ctx.fillStyle =  txt.color;
+        console.log ('colorddddddd' , txt.color);
         ctx.fillText(txt.line,canvas.width / 2, txt.height);
         console.log ('txt.line' , txt.line);
         
