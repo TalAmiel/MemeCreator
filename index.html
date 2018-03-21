@@ -50,22 +50,22 @@
                         <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
                 </div>
                 <div class="line-setup-opts flex space-between">
-                       <div class="delete line" onclick="deleteMemeText(0)" >
+                       <div title="Delete top meme" class="delete line" onclick="deleteMemeText(0)" >
                             <button class="opt-button"><i class="far fa-trash-alt"></i></button>
                         </div>
-                        <input type="color"  onchange="changeColor(event,0)" class="color-picker">
+                        <input title="Change color" type="color"  onchange="changeColor(event,0)" class="color-picker">
                         <div class="change-font-size flex">
                 
-                            <button class="opt-button decrease-font-size" onclick="decreaseFont(0)" >&#128475</button>
-                            <button class="opt-button increase-font-size" onclick="increaseFont(0)">&#128474</button>
+                            <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(0)" >&#128475</button>
+                            <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(0)">&#128474</button>
 
                        
                         </div >
-                        <button class="opt-button text-shadow" onclick="textShadowToggle(0)">A</button>
+                        <button title="Add shadow" class="opt-button text-shadow" onclick="textShadowToggle(0)">A</button>
                     <div class="align-text flex justify-end ">
-                        <button class="opt-button" onclick="changeAlign('left',0)"><i class="fas fa-align-left"></i></button>
-                        <button class="opt-button" onclick="changeAlign('center',0)"><i class="fas fa-align-center"></i></button>
-                        <button class="opt-button" onclick="changeAlign('right',0)"><i class="fas fa-align-right"></i></button>
+                        <button title="Align left" class="opt-button" onclick="changeAlign('left',0)"><i class="fas fa-align-left"></i></button>
+                        <button title="Align center" class="opt-button" onclick="changeAlign('center',0)"><i class="fas fa-align-center"></i></button>
+                        <button title="Align right" class="opt-button" onclick="changeAlign('right',0)"><i class="fas fa-align-right"></i></button>
                     </div >
                     
                     

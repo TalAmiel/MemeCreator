@@ -375,7 +375,7 @@ footer {
     canvas {
       border :1px solid red;
       
-      margin-left:300px;
+      margin: 0 auto;
     }
      .imgs-container img{
       width:100%;

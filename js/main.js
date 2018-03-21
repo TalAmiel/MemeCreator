@@ -1,10 +1,9 @@
 
 'use strict';
-console.log('koko');
 
 var gCurrImg = '';
-
 var gKeywordCount;
+
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
@@ -36,7 +35,6 @@ var gImgs = [{
     keywords: ['sad']
 }
 ]
-console.log('gImgs', gImgs);
 
 var gMeme = {
     selectedImgId: 5,
@@ -45,7 +43,7 @@ var gMeme = {
             line: '',
             size: 20,
             height:40,
-            align: 'left',
+            align: 'right',
             color: 'black'
         },
         {
