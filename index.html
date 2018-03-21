@@ -47,7 +47,7 @@
         <div class="meme-options-container">
             <div  class = "top-line line-container flex column space-between" >
                 <div  class="enter-text">
-                        <input type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
+                        <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
                 </div>
                 <div class="line-setup-opts flex space-between">
                        <div class="delete line" onclick="deleteMemeText(0)" >
@@ -66,12 +66,27 @@
                 </div>
             </div>
             <div  class = "bottom-line line-container" > 
-                    <div  class="enter-text">a</div>
-                    <div class="line-setup-opts">b</div> 
+                    <div  class="enter-text">
+                            <input onkeyup="changeText(event,1)" type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
+                    </div>
+                    <div class="line-setup-opts flex space-between">
+                           <div class="delete line" onclick="deleteMemeText(0)" >
+                                <button class="opt-button"><i class="far fa-trash-alt"></i></button>
+                            </div>
+                            <div class="change-font-size">
+                                    <button class="opt-button" >	&#128474</button>
+                            </div >
+                        <div class="align-text flex justify-end ">
+                            <button class="opt-button"><i class="fas fa-align-left"></i></button>
+                            <button class="opt-button"><i class="fas fa-align-center"></i></button>
+                            <button class="opt-button"><i class="fas fa-align-right"></i></button>
+                        </div >
+                    </div>
             </div>                   
         </div>
     </div> 
     <main class="container">
+            <div class="ord"
             <div class=searchBar>
                     <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
             </div>
