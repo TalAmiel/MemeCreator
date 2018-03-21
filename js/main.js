@@ -99,9 +99,9 @@ function renderCanvas(){
         ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
         ctx.font = 'italic 40pt Calibri';
       ctx.fillText('hello',canvas.width / 2, 70);
-      debugger;
-      var dataURL = canvas.toDataURL();
-      document.getElementById('canvasImg').src = dataURL;
+    //   debugger;
+    //   var dataURL = canvas.toDataURL();
+    //   document.getElementById('canvasImg').src = dataURL;
       
 
  
