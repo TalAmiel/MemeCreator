@@ -342,14 +342,23 @@ function renderLines() {
         // console.log ('ctx font', ctx.font);
         var align;
         ctx.shadowColor = "black";
-        if (txt.align === 'left') ctx.textAlign = 'left';
-        else if (txt.align === 'right') ctx.textAlign = 'right';
-        else align = ctx.textAlign = 'center';
+        if (txt.align === 'left'){
+          ctx.textAlign = 'left';
+        ctx.fillText(txt.line, 30 , txt.height);
+    }
+        else if (txt.align === 'right') {
+            ctx.textAlign = 'right';
+            ctx.fillText(txt.line, 470 , txt.height);
+        } 
+        else {
+            ctx.textAlign = 'center';
+            ctx.fillText(txt.line, canvas.width / 2, txt.height);
+        } 
         console.log('align', align);
         (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle = txt.color;
         console.log('colorddddddd', txt.color);
-        ctx.fillText(txt.line, canvas.width / 2, txt.height);
+        
         console.log('txt.line', txt.line);
 
     })
