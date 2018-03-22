@@ -209,6 +209,19 @@ function changeColor(evt, id) {
     renderCanvas();
 }
 
+function replaceMenuActive (elClickLink){
+    console.log ('koko');
+    var elLinks = document.querySelectorAll('.main-menu a');
+    elLinks.forEach (function (elLink){
+        console.log ('clicked' , elClickLink);
+        console.log ('elLink' ,elLink);
+        if (elLink === elClickLink) elLink.classList.add ('active');
+        else elLink.classList.remove ('active'); 
+    })
+}
+
+      
+
 function changeAlign(align,id){
     var elAlignBtnLeft = document.querySelector('.align-left');
     var elAlignBtnCenter = document.querySelector('.align-center-box');
