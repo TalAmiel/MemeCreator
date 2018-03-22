@@ -71,7 +71,7 @@ var gMeme = {
         {
             line: '',
             size: 60,
-            height: 400,
+            height: 350,
             align: 'center',
             color: 'black',
             isShadow: false,
