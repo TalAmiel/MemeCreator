@@ -45,7 +45,7 @@ var gMeme = {
             height:40,
             align: 'right',
             color: 'black',
-            shadow: false,
+            isShadow: false,
             font: 'eurofbold',
         },
         {
@@ -54,7 +54,7 @@ var gMeme = {
             height: 400,
             align: 'left',
             color: 'black',
-            shadow: false,
+            isShadow: false,
             font: 'Calibri',
         },
 
@@ -125,9 +125,11 @@ function decreaseFont (id){
 }
 
 function textShadowToggle(id) {
-    (!gMeme.txts[id].shadow) ? gMeme.txts[id].shadow = true : gMeme.txts[id].shadow = false;;
+    (!gMeme.txts[id].isShadow) ? gMeme.txts[id].isShadow = true : gMeme.txts[id].isShadow = false;;
     renderCanvas();
-    }
+}
+
+
 
 
 function renderCanvas() {
@@ -157,7 +159,7 @@ function renderLines(){
         else if (txt.align === 'right') align = 100;
         else align=0;
         console.log ('align' , align);
-        (txt.shadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
+        (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle =  txt.color;
         console.log ('colorddddddd' , txt.color);
         ctx.fillText(txt.line,canvas.width / 2 +align, txt.height);
