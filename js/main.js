@@ -47,7 +47,7 @@ var gImgs = [{
 {
     id: 9,
     url: 'img/meme9.jpg',
-    keywords: ['cartoon', 'angry']
+    keywords: ['cartoon', 'angry','spiderman']
 },
 {
     id: 10,
@@ -61,18 +61,18 @@ var gMeme = {
     txts: [
         {
             line: '',
-            size: 20,
+            size: 60,
             height: 40,
-            align: 'right',
+            align: 'center',
             color: 'black',
             isShadow: false,
             font: 'eurofbold',
         },
         {
             line: '',
-            size: 20,
+            size: 60,
             height: 400,
-            align: 'left',
+            align: 'center',
             color: 'black',
             isShadow: false,
             font: 'Calibri',
@@ -92,9 +92,6 @@ function init() {
 }
 
 
-
-
-
 function renderImgs(imgs) {
 
     var elImgsContainer = document.querySelector('.imgs-container');
@@ -102,7 +99,7 @@ function renderImgs(imgs) {
     var strHtml = '';
     console.log('gimgs2', imgs);
     imgs.forEach(function (img) {
-        strHtml += '<div onclick="imgSelected(' + img.id + ')" ><img src="' + img.url + '"></div>'
+        strHtml += '<div onclick="imgSelected(' + img.id + ')" ><a href="#meme-page-id"><img src="' + img.url + '"></a></div>'
         console.log('img.url', img['url']);
         // strHtml += '<div style="background: url(/img/meme1.jpg);
     })
@@ -175,15 +172,15 @@ function renderKeyords(gKeywordCount) {
     console.log('elKeywordsContainer', elKeywordsContainer);
     var strHtml = '';
     for (var key in gKeywordCountMap) {
-        var fontSize = getFontSize(gKeywordCountMap[key]);
-        console.log('keyyyy', key, 'gKeywordCount[key]', gKeywordCountMap[key]);
-        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:' + fontSize + 'px";>' + key + '</a>'
+        var fontSize = getFontSize (gKeywordCountMap[key]);
+        console.log ('keyyyy' , key , 'gKeywordCount[key]' , gKeywordCountMap[key] );
+        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:'+fontSize+'px";>'+key+'</a>'
     }
     elKeywordsContainer.innerHTML = strHtml;
 }
 
-function getFontSize(num) {
-    return 20 + 6 * num
+function getFontSize(num){
+    return 20+20*num
 }
 
 
@@ -285,6 +282,8 @@ function changeAlign(align, id) {
         elAlignBtnLeft.classList.remove("clicked-btn-align");
     }
     gMeme.txts[id].align = align;
+    console.log(gMeme.txts[id].align);
+    
     renderCanvas();
 }
 function increaseFont(id) {
@@ -343,14 +342,14 @@ function renderLines() {
         // console.log ('ctx font', ctx.font);
         var align;
         ctx.shadowColor = "black";
-        if (txt.align === 'left') align = -100;
-        else if (txt.align === 'right') align = 100;
-        else align = 0;
+        if (txt.align === 'left') ctx.textAlign = 'left';
+        else if (txt.align === 'right') ctx.textAlign = 'right';
+        else align = ctx.textAlign = 'center';
         console.log('align', align);
         (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle = txt.color;
         console.log('colorddddddd', txt.color);
-        ctx.fillText(txt.line, canvas.width / 2 + align, txt.height);
+        ctx.fillText(txt.line, canvas.width / 2, txt.height);
         console.log('txt.line', txt.line);
 
     })
@@ -370,12 +369,22 @@ button.addEventListener('click', function (e) {
 
 
 
-// function deleteMemeText(idx) {
-//     console.log ('koko');
-//     var txts = gMeme.txts;
+function deleteMemeText(idx) {
+    var txts = gMeme.txts;
+    var elText='';
+    console.log ('mmmmmmmm');
+    if (idx === 0)  elText = document.querySelector('.top-line-text');
+    else  elText = document.querySelector('.bottom-line-text');
+    elText.value = '';
+    txts[idx].line = '';
+    renderCanvas();
+}
 
-//     txts.splice(idx, 1);
-//     console.log (txts);
+// function deleteBottomMemeText(idx) {
+//     var txts = gMeme.txts;
+//     var elTextTop = document.querySelector('.bottom-line-text');
+//     elTextTop.value = '';
+//     txts[idx].line = '';
 //     renderCanvas();
 // }
 

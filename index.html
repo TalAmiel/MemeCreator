@@ -24,18 +24,18 @@
                         <a href="#" onclick="replaceMenuActive(this)" class="active">Gallery</a>
                     </li>
                     <li>
-                        <a  href="#" onclick="replaceMenuActive(this)">About us</a>
+                        <a  href="#about-us-test" onclick="replaceMenuActive(this)">About</a>
                     </li>
                     <li>
-                        <a href="#" onclick="replaceMenuActive(this)";>Contact us</a>
+                        <a href="#contact-us-test" onclick="replaceMenuActive(this)">Contact</a>
                     </li>
                 </ul>
             </nav>
         </section>
     </header>
     
-    <div class="meme-page flex space-between">
-        <canvas id="myCanvas" width=500 height=420></canvas>
+    <div class="meme-page  flex space-between" id="meme-page-id">
+        <canvas  id="myCanvas" width=500 height=420></canvas>
         </canvas>
         <div class="meme-options-container">
             <div  class = "top-line line-container flex column space-between" >
@@ -75,38 +75,43 @@
             </div>
 
             <div  class = "bottom-line line-container flex column space-between" >
-                <div  class="enter-text">
-                        <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-bottom" placeholder="meme bottom line  "/>
-                </div>
-                <div class="line-setup-opts flex space-between">
-                       <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)" >
-                            <button class="opt-button"><i class="far fa-trash-alt"></i></button>
-                        </div>
-                        <input title="Change color" type="color"  onchange="changeColor(event,1)" class="color-picker">
-                        <div class="change-font-size flex">
-                
-                            <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(1)" >&#128475</button>
-                            <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(1)">&#128474</button>
-
-                       
-                        </div >
-                        <select onchange="changeFont(1,this.value)" name="choose-font">
-                            <option style="display:none" disabled selected value></option>
-                            <option value="Calibri">Calibri</option>
-                            <option value="eurofbold">eurofbold</option>
-                            <option value="latobold">latobold</option>
-                          </select>
-                        <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(1)">A</button>
-                    <div class="align-text flex justify-end ">
-                        <button title="Align left" class="opt-button" onclick="changeAlign('left',1)"><i class="fas fa-align-left"></i></button>
-                        <button title="Align center" class="opt-button" onclick="changeAlign('center',1)"><i class="fas fa-align-center"></i></button>
-                        <button title="Align right" class="opt-button" onclick="changeAlign('right',1)"><i class="fas fa-align-right"></i></button>
-                    </div >
+                    <div  class="enter-text">
+                            <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-top" placeholder="meme bottom line  "/>
+                    </div>
+                    <div class="line-setup-opts flex space-between">
+                           <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)" >
+                                <button class="opt-button"><i class="far fa-trash-alt"></i></button>
+                            </div>
+                            <input title="Change color" type="color"  onchange="changeColor(event,1)" class="color-picker">
+                            <div class="change-font-size flex">
                     
+                                <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(1)" >&#128475</button>
+                                <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(1)">&#128474</button>
+    
+                            </div >
+                            <div class= "flex move-lines-vertic">
+                                    <button title="Move up" onclick="incHeight(1)" class="opt-button-increase-height"><i class="fas fa-arrow-up"></i></button>
+                                    <button title="Move down" onclick="decHeight(1)" class="opt-button-decrease-height"><i class="fas fa-arrow-down"></i></button>
+                             </div>
+                            
+                                <select onchange="changeFont(1,this.value)" name="choose-font">
+                                  <!-- <option style="display:none" disabled selected value></option> -->
+                                  <option value="eurofbold">eurofbold</option>
+                                  <option value="Calibri">Calibri</option>
+                                  <option value="latobold">latobold</option>
+                                </select>
+                            <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(1)">A</button>
+                        <div class="align-text flex justify-end ">
+                            <button title="Align left" class="opt-button align-left" onclick="changeAlign('left',1)"><i class="fas fa-align-left"></i></button>
+                            <button title="Align center" class="opt-button align-center-box" onclick="changeAlign('center',1)"><i class="fas fa-align-center"></i></button>
+                            <button title="Align right" class="opt-button align-right" onclick="changeAlign('right',1)"><i class="fas fa-align-right"></i></button>
+                        </div >
+                        
+                    </div>
                 </div>
                 
                 
-            </div>
+            
             
             
             <div class="add-image">
@@ -122,8 +127,13 @@
                     <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
             </div>
             <div class="imgs-container grid"></div>
-            <div class="keywords-container"></div>
-            <div class="about-us flex  space-between align-center">
+            <div class="keywords">Sort by keywords:
+                <div class="keywords-container"></div>
+                <button class="show-all-memes" onclick="init()">Show all memes</button>
+                <br>
+                <br>
+        </div>
+            <div id="about-us-test" class="about-us flex  space-between align-center">
                 <img src="img/co-founders.jpg">
                 <div class="info">
                         <h2>miZen</h2>
@@ -140,7 +150,7 @@
              </div>
 
             <section>
-                <div class="contact-us">
+                <div id="contact-us-test" class="contact-us">
                     <hr>
                         <section class="container contact-us-container main-wrapper flex space-between justify-center">
                                 <div class="first-panel text-wrapper">
@@ -161,7 +171,7 @@
                                           <h3>Quick Contact</h3>
                                           <h4>Contact us today, and get reply with in 24 hours!</h4>
                                           <fieldset>
-                                            <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                                            <input placeholder="Your name" type="text" tabindex="1" required >
                                           </fieldset>
                                           <fieldset>
                                             <input placeholder="Your Email Address" type="email" tabindex="2" required>
