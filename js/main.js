@@ -61,18 +61,18 @@ var gMeme = {
     txts: [
         {
             line: '',
-            size: 20,
+            size: 60,
             height: 40,
-            align: 'right',
+            align: 'center',
             color: 'black',
             isShadow: false,
             font: 'eurofbold',
         },
         {
             line: '',
-            size: 20,
+            size: 60,
             height: 400,
-            align: 'left',
+            align: 'center',
             color: 'black',
             isShadow: false,
             font: 'Calibri',
