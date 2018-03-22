@@ -47,7 +47,7 @@ var gImgs = [{
 {
     id: 9,
     url: 'img/meme9.jpg',
-    keywords: ['cartoon', 'angry']
+    keywords: ['cartoon', 'angry','spiderman']
 },
 {
     id: 10,
@@ -175,14 +175,14 @@ function renderKeyords (gKeywordCount){
     var strHtml = '';
     for (var key in gKeywordCountMap) {
         var fontSize = getFontSize (gKeywordCountMap[key]);
-        console.log ('keyyyy' , key , 'gKeywordCount[key]' , gKeywordCountMap[key] );
+        // console.log ('keyyyy' , key , 'gKeywordCount[key]' , gKeywordCountMap[key] );
         strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:'+fontSize+'px";>'+key+'</a>'
     }
     elKeywordsContainer.innerHTML = strHtml;
 }
 
 function getFontSize(num){
-    return 20+6*num
+    return 20+20*num
 }
 
 

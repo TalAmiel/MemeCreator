@@ -178,6 +178,27 @@ header {
   }
 
 } 
+.show-all-memes {
+  padding: 20px;
+}
+
+.keywords {
+  font-size: 30px;
+  text-align: center;
+}
+
+.keywords-container  {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  
+}
+
+.keywords-container a {
+  padding: 10px;
+  text-decoration:none;
+}
 
 
 
