@@ -271,6 +271,8 @@ function changeAlign(align,id){
         elAlignBtnLeft.classList.remove("clicked-btn-align");
     }
     gMeme.txts[id].align = align;
+    console.log(gMeme.txts[id].align);
+    
     renderCanvas();
 }
 function increaseFont(id) {
@@ -333,15 +335,16 @@ function renderLines() {
         ctx.font = txt.size + 'px ' + txt.font;
         // console.log ('ctx font', ctx.font);
         var align;
+        debugger;
         ctx.shadowColor = "black";
-        if (txt.align === 'left') align = -100;
-        else if (txt.align === 'right') align = 100;
-        else align = 0;
+        if (txt.align === 'left') ctx.textAlign = 'left';
+        else if (txt.align === 'right') ctx.textAlign = 'right';
+        else align = ctx.textAlign = 'center';
         console.log('align', align);
         (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle = txt.color;
         console.log('colorddddddd', txt.color);
-        ctx.fillText(txt.line, canvas.width / 2 + align, txt.height);
+        ctx.fillText(txt.line, canvas.width / 2, txt.height);
         console.log('txt.line', txt.line);
 
     })
