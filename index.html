@@ -15,8 +15,7 @@
     <header>
         <section class="container header-wrapper flex align-center">
             <div class="logo flex-1">
-                Blogin
-                <span>.</span>
+                Meme Creator
             </div>
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu clean-list flex align-center">
@@ -61,6 +60,13 @@
 
                        
                         </div >
+                        
+                            <select onchange="changeFont(0,this.value)" name="choose-font">
+                              <option style="display:none" disabled selected value></option>
+                              <option value="eurofbold">eurofbold</option>
+                              <option value="Calibri">Calibri</option>
+                              <option value="latobold">latobold</option>
+                            </select>
                         <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(0)">A</button>
                     <div class="align-text flex justify-end ">
                         <button title="Align left" class="opt-button" onclick="changeAlign('left',0)"><i class="fas fa-align-left"></i></button>
@@ -88,15 +94,21 @@
 
                        
                         </div >
+                        <select onchange="changeFont(1,this.value)" name="choose-font">
+                            <option style="display:none" disabled selected value></option>
+                            <option value="Calibri">Calibri</option>
+                            <option value="eurofbold">eurofbold</option>
+                            <option value="latobold">latobold</option>
+                          </select>
                         <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(1)">A</button>
                     <div class="align-text flex justify-end ">
                         <button title="Align left" class="opt-button" onclick="changeAlign('left',1)"><i class="fas fa-align-left"></i></button>
                         <button title="Align center" class="opt-button" onclick="changeAlign('center',1)"><i class="fas fa-align-center"></i></button>
                         <button title="Align right" class="opt-button" onclick="changeAlign('right',1)"><i class="fas fa-align-right"></i></button>
                     </div >
-                    <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
                     
                 </div>
+                <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
             </div>
 
         </div>
@@ -113,8 +125,7 @@
 
         <section class="container">
             <div class="logo">
-                Blogin
-                <span>.</span>
+                Meme Creator
             </div>
             <small>© 2014 Blogin.com - All Rights Reserved - Find more free Templates at Pixelhint.com</small>
         </section>

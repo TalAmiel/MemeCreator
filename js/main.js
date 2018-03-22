@@ -45,7 +45,8 @@ var gMeme = {
             height:40,
             align: 'right',
             color: 'black',
-            shadow: false
+            shadow: false,
+            font: 'eurofbold',
         },
         {
             line: '',
@@ -53,7 +54,8 @@ var gMeme = {
             height: 400,
             align: 'left',
             color: 'black',
-            shadow: false
+            shadow: false,
+            font: 'Calibri',
         },
 
     ]
@@ -90,6 +92,11 @@ function renderImgs(imgs) {
 
 function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
+    renderCanvas();
+}
+
+function changeFont(id, value) {
+    gMeme.txts[id].font = value;
     renderCanvas();
 }
 
@@ -134,7 +141,7 @@ function renderCanvas() {
 }
 
 function renderMeme() {
-    ctx.font = 'italic 40pt Calibri';
+    // ctx.font = 'italic 40pt Calibri';
     // console.log('gMeme.txts[0].line', gMeme.txts[id].line);
     // console.log('id ', id);
     renderLines();
@@ -142,7 +149,7 @@ function renderMeme() {
 function renderLines(){
     var txts = gMeme.txts;
     txts.forEach (function renderLine(txt){
-        ctx.font = txt.size+'px Calibri';
+        ctx.font = txt.size+'px ' + txt.font;
         // console.log ('ctx font', ctx.font);
         var align;
         ctx.shadowColor="black";
