@@ -385,18 +385,20 @@ footer {
       header{
         height:80px;
         padding-right:30px;
+      } 
+      .main-menu a{
+        height:80px;
+        line-height:80px;
+        padding-left:20px;
+        padding-right:20px;
+        
+        width:100%; 
         
       }
+    }
 
       @media (max-width: 550px) {
         
-        .grid{
-          grid-gap: 20px;
-      grid-auto-rows: 100%; 
-      
-      
-        }
-
         header{
           height:50px;
         }
@@ -411,14 +413,8 @@ footer {
         }
        
       }
-      .main-menu a{
-        height:80px;
-        line-height:80px;
-        padding-left:20px;
-        padding-right:20px;
-        
-        width:100%; 
-      }
+      /* 
+      } */
       
       
 
