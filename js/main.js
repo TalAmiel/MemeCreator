@@ -361,14 +361,21 @@ button.addEventListener('click', function (e) {
 
 
 
-// function deleteMemeText(idx) {
-//     console.log ('koko');
-//     var txts = gMeme.txts;
+function deleteMemeText(idx) {
+    var txts = gMeme.txts;
+    var elTextTop = document.querySelector('.top-line-text');
+    elTextTop.value = '';
+    txts[idx].line = '';
+    renderCanvas();
+}
 
-//     txts.splice(idx, 1);
-//     console.log (txts);
-//     renderCanvas();
-// }
+function deleteBottomMemeText(idx) {
+    var txts = gMeme.txts;
+    var elTextTop = document.querySelector('.bottom-line-text');
+    elTextTop.value = '';
+    txts[idx].line = '';
+    renderCanvas();
+}
 
 //TODO: create init
 
