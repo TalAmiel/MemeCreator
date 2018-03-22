@@ -90,6 +90,24 @@ function renderImgs(imgs) {
     console.log('elImgsContainer2', elImgsContainer);
 }
 
+// function toggle_visibility(id) {
+//     var e = document.getElementById(id);
+//     if(e.style.border == '1px solid red';
+//        e.style.display = 'none';
+//     else
+//        e.style.display = 'block';
+//  }
+
+function incHeight(id) {
+    gMeme.txts[id].height -= 5;
+    renderCanvas();
+}
+
+function decHeight(id) {
+    gMeme.txts[id].height += 5;
+    renderCanvas();
+}
+
 function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
     renderCanvas();
@@ -109,7 +127,22 @@ function changeColor(evt,id){
 }
 
 function changeAlign(align,id){
-    console.log ('koko');
+    var elAlignBtnLeft = document.querySelector('.align-left');
+    var elAlignBtnCenter = document.querySelector('.align-center-box');
+    var elAlignBtnRight = document.querySelector('.align-right');
+    if (align === 'left') {
+        elAlignBtnLeft.classList.add("clicked-btn-align");
+        elAlignBtnCenter.classList.remove("clicked-btn-align");
+        elAlignBtnRight.classList.remove("clicked-btn-align");
+    }else if (align === 'right') {
+        elAlignBtnRight.classList.add("clicked-btn-align");
+        elAlignBtnCenter.classList.remove("clicked-btn-align");
+        elAlignBtnLeft.classList.remove("clicked-btn-align");
+    }else if (align === 'center') {
+        elAlignBtnRight.classList.remove("clicked-btn-align");
+        elAlignBtnCenter.classList.add("clicked-btn-align");
+        elAlignBtnLeft.classList.remove("clicked-btn-align");
+    }
     gMeme.txts[id].align = align;
     renderCanvas();
 }
@@ -125,12 +158,17 @@ function decreaseFont (id){
 }
 
 function textShadowToggle(id) {
-    (!gMeme.txts[id].isShadow) ? gMeme.txts[id].isShadow = true : gMeme.txts[id].isShadow = false;;
+    var elShadowBtn = document.querySelector('.text-shadow');
+    console.log('show shdw btn',elShadowBtn);
+    elShadowBtn.classList.toggle("clicked-btn-shadow");
+    if (!gMeme.txts[id].isShadow) {
+        gMeme.txts[id].isShadow = true
+        
+    } else {
+        gMeme.txts[id].isShadow = false;
+    } 
     renderCanvas();
 }
-
-
-
 
 function renderCanvas() {
     canvas = document.querySelector('canvas');

@@ -370,7 +370,20 @@ footer {
       display:none;
     } */
 
-    
+    .clicked-btn-shadow {
+      border :2px solid lightblue;
+    }
+
+    .clicked-btn-align-right {
+      border :2px solid lightblue;
+    }
+    .clicked-btn-align-center {
+      border :2px solid lightblue;
+    }
+
+    .clicked-btn-align {
+      border :2px solid lightblue;
+    }
 
     canvas {
       border :1px solid red;
