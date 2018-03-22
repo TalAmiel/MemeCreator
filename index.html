@@ -20,16 +20,13 @@
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu clean-list flex align-center">
                     <li>
-                        <a href="#" class="active">Portfolio</a>
+                        <a href="#" onclick="replaceMenuActive(this)" class="active">Memes</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a  href="#" onclick="replaceMenuActive(this)">About us</a>
                     </li>
                     <li>
-                        <a href="#">Blog</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact us</a>
+                        <a href="#" onclick="replaceMenuActive(this)";>Contact us</a>
                     </li>
                 </ul>
                 <button class="toggle-menu-btn fa" onclick="toggleMenu()" alt="Open main menu"></button>
@@ -117,7 +114,7 @@
             <button class="add-line" onclick="addLine()">Add Line</button>
         </div>
     </div> 
-    <main class="container">
+    <main class="main-container">
             <div class=searchBar>
                     <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
             </div>
