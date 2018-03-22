@@ -27,7 +27,7 @@ var gImgs = [{
 {
     id: 5,
     url: 'img/meme5.jpg',
-    keywords: ['sad','toys']
+    keywords: ['sad', 'toys']
 },
 {
     id: 6,
@@ -111,9 +111,10 @@ function renderImgs(imgs) {
     elImgsContainer.innerHTML = strHtml;
     console.log('elImgsContainer2', elImgsContainer);
 }
+
 function filterImgs(elWord) {
-    var text = elWord.value? elWord.value:elWord.innerText;
-    console.log ('text');
+    var text = elWord.value ? elWord.value : elWord.innerText;
+    console.log('text');
     //console.log('elWord', elWord.value);
 
     var shownImgs = gImgs.filter(function (img) {
@@ -169,20 +170,20 @@ function findModes(values) {
     return valueRepeatsMap;
 }
 
-function renderKeyords (gKeywordCount){
+function renderKeyords(gKeywordCount) {
     var elKeywordsContainer = document.querySelector('.keywords-container');
     console.log('elKeywordsContainer', elKeywordsContainer);
     var strHtml = '';
     for (var key in gKeywordCountMap) {
-        var fontSize = getFontSize (gKeywordCountMap[key]);
-        console.log ('keyyyy' , key , 'gKeywordCount[key]' , gKeywordCountMap[key] );
-        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:'+fontSize+'px";>'+key+'</a>'
+        var fontSize = getFontSize(gKeywordCountMap[key]);
+        console.log('keyyyy', key, 'gKeywordCount[key]', gKeywordCountMap[key]);
+        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:' + fontSize + 'px";>' + key + '</a>'
     }
     elKeywordsContainer.innerHTML = strHtml;
 }
 
-function getFontSize(num){
-    return 20+6*num
+function getFontSize(num) {
+    return 20 + 6 * num
 }
 
 
@@ -228,32 +229,45 @@ function changeColor(evt, id) {
     renderCanvas();
 }
 
-function replaceMenuActive (elClickLink){
-    console.log ('koko');
+function replaceMenuActive(elClickLink) {
+    console.log('koko');
     var elLinks = document.querySelectorAll('.main-menu a');
-    elLinks.forEach (function (elLink){
-        console.log ('clicked' , elClickLink);
-        console.log ('elLink' ,elLink);
-        if (elLink === elClickLink) elLink.classList.add ('active');
-        else elLink.classList.remove ('active'); 
+    elLinks.forEach(function (elLink) {
+        console.log('clicked', elClickLink);
+        console.log('elLink', elLink);
+        if (elLink === elClickLink) elLink.classList.add('active');
+        else elLink.classList.remove('active');
     })
+}
+function takeImageAddress(){
+    var elImageAddress = document.querySelector('#imageAddress');
+    console.log ('url' , elImageAddress.value);
+    addImgUrl(elImageAddress.value);
 }
 
 function addImgUrl(url) {
-var newObj =
-{
-    id: 11,
-    url: url,
-    keywords: []
+    var newObj =
+        {   
+            url: url,
+            keywords: []
+        }
+    newObj.id = getNewID();
+    gImgs.push(newObj);
+    console.log('gImgs', gImgs);
+    renderImgs(gImgs);
+    imgSelected(newObj.id)
+    // renderCanvas();
 }
 
-gImgs.push(newObj);
-    console.log ('gImgs' , gImgs);
-    renderImgs(gImgs);
-    renderCanvas();
-} 
+function getNewID(){
+    var max=0;
+    gImgs.forEach(function (img){
+        if (img.id>max) max = img.id;
+    })
+    return max+1;
+}
 
-function changeAlign(align,id){
+function changeAlign(align, id) {
     var elAlignBtnLeft = document.querySelector('.align-left');
     var elAlignBtnCenter = document.querySelector('.align-center-box');
     var elAlignBtnRight = document.querySelector('.align-right');
@@ -261,11 +275,11 @@ function changeAlign(align,id){
         elAlignBtnLeft.classList.add("clicked-btn-align");
         elAlignBtnCenter.classList.remove("clicked-btn-align");
         elAlignBtnRight.classList.remove("clicked-btn-align");
-    }else if (align === 'right') {
+    } else if (align === 'right') {
         elAlignBtnRight.classList.add("clicked-btn-align");
         elAlignBtnCenter.classList.remove("clicked-btn-align");
         elAlignBtnLeft.classList.remove("clicked-btn-align");
-    }else if (align === 'center') {
+    } else if (align === 'center') {
         elAlignBtnRight.classList.remove("clicked-btn-align");
         elAlignBtnCenter.classList.add("clicked-btn-align");
         elAlignBtnLeft.classList.remove("clicked-btn-align");
@@ -285,14 +299,14 @@ function decreaseFont(id) {
 
 function textShadowToggle(id) {
     var elShadowBtn = document.querySelector('.text-shadow');
-    console.log('show shdw btn',elShadowBtn);
+    console.log('show shdw btn', elShadowBtn);
     elShadowBtn.classList.toggle("clicked-btn-shadow");
     if (!gMeme.txts[id].isShadow) {
         gMeme.txts[id].isShadow = true
-        
+
     } else {
         gMeme.txts[id].isShadow = false;
-    } 
+    }
     renderCanvas();
 }
 
@@ -307,10 +321,8 @@ function addLine() {
         font: 'Calibri',
     }
     gMeme.txts.push(txt);
-    console.log ('gMeme.txts' , gMeme.txts);
+    console.log('gMeme.txts', gMeme.txts);
 }
-
-
 
 function renderCanvas() {
     canvas = document.querySelector('canvas');
@@ -322,9 +334,6 @@ function renderCanvas() {
 }
 
 function renderMeme() {
-    // ctx.font = 'italic 40pt Calibri';
-    // console.log('gMeme.txts[0].line', gMeme.txts[id].line);
-    // console.log('id ', id);
     renderLines();
 }
 function renderLines() {

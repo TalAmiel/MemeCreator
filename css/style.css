@@ -262,11 +262,9 @@ footer {
         }
 
     
-
-
-    /* .hide{
+    hide{
       display:none;
-    } */
+    } 
 
     .clicked-btn-shadow {
       border :2px solid lightblue;
@@ -294,19 +292,18 @@ footer {
 
      .meme-options-container{
       padding:20px;
+      width:500px;
+     }
+
+     .line-container{
+       margin-bottom: 30px;
+
      }
 
      .line-container .enter-text{
        margin-bottom: 10px;
      }
 
-     .top-line-text{
-       width:350px;
-     }
-
-     .bottom-line-text{
-       width:500px;
-     }
      .searchBar{
        text-align: center;
        margin-bottom:10px;
@@ -315,13 +312,15 @@ footer {
      }
 
      .meme-page{
-       height:0px;
-       overflow:hidden;
-       transition: all 5s;
+       display:none;
+       padding:20px;
+       width:450px;
+
      }
      
      .meme-page.show{
-       height:auto;
+       display:inline-flex;
+
     }
 
     .color-picker{
@@ -332,9 +331,7 @@ footer {
     .text-shadow{
       text-shadow: 2px 1px;
     }
-    .add-line {
-      margin-left:10px;
-    }
+    
     .about-us{
     padding:30px;
     background-color:rgb(119, 143, 126)

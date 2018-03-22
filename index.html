@@ -40,7 +40,7 @@
         <div class="meme-options-container">
             <div  class = "top-line line-container flex column space-between" >
                 <div  class="enter-text">
-                        <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="let go, and just meme it ..   "/>
+                        <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="meme top line  "/>
                 </div>
                 <div class="line-setup-opts flex space-between">
                        <div title="Delete top meme" class="delete line" onclick="deleteMemeText(0)" >
@@ -76,7 +76,7 @@
 
             <div  class = "bottom-line line-container flex column space-between" >
                 <div  class="enter-text">
-                        <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-bottom" placeholder="let go, and just meme it ..   "/>
+                        <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-bottom" placeholder="meme bottom line  "/>
                 </div>
                 <div class="line-setup-opts flex space-between">
                        <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)" >
@@ -107,12 +107,14 @@
                 
                 
             </div>
-            <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
-            <button class="add-line" onclick="addLine()">Add Line</button>
-            <div>
-                <input type="text" id="image-url" name="upload-url" placeholder="add URL here">
-            <button class="add-line" onclick="addImgUrl('https://img.europapress.es/fotoweb/google-fotos-permite-ahora-ocultar-imagenes-necesidad-eliminarlas_fotonoticia_20170525104125_660.jpg')">Add image by URL</button>
-        </div>
+            
+            
+            <div class="add-image">
+                    <label onclick="takeImageAddress()" for="imageAddress"><button>add url</button></label>
+                    <input type="text"  id="imageAddress" name="upload-url" placeholder="add URL here..">
+            </div>
+        <button class="add-line" onclick="addLine()">Add Line</button>
+        <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
         </div>
     </div> 
     <main class="main-container">
@@ -191,7 +193,7 @@
 
         <section class="container">
             <div class="logo">
-                Meme Creator
+                Memes
             </div>
             <small>© 2018 Coffee Rights</small>
         </section>
@@ -199,12 +201,6 @@
     
     </footer>
 
-    <script>
-        function toggleMenu() {
-            var mainMenu = document.getElementById('mainMenu');
-            console.log(mainMenu);
-            mainMenu.classList.toggle('open');
-        }
     </script>
     <!-- <script  src="https://code.jquery.com/jquery-3.3.1.min.js"> </script> -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
