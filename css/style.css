@@ -421,6 +421,9 @@ footer {
     .text-shadow{
       text-shadow: 2px 1px;
     }
+    .add-line {
+      margin-left:10px;
+    }
       
 
 
