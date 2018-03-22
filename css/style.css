@@ -31,6 +31,17 @@
   font-weight: normal;
   font-style: normal; }
 
+@font-face {
+    font-family: 'MavenReg';
+    src: url("../fonts/MavenPro/MavenPro-Regular.ttf") 
+  }
+
+@font-face {
+  font-family: 'LatoReg';
+  src: url('../fonts/lato/Lato-Regular.ttf');
+}
+
+
 .fa {
   display: inline-block;
   font-family: fontawesome;
@@ -126,11 +137,7 @@ html {
 body {
   margin: 0; }
 
-h1, h2, h3, h4, h5, h6 {
-  text-transform: uppercase;
-  margin: 0 0 1.25rem;
-  font-weight: normal;
-  font-family: latobold, sans-serif; }
+
 
 h1 {
   font-size: 3rem;
@@ -336,7 +343,32 @@ footer {
     }
     .about-us{
     padding:68px;
+    background-color: #2eb398;
+    
+
+    /* font-family:'MavenReg', sans-serif;
+    font-family: 'Maven Pro', sans-serif;
+    /* font-family:'LatoReg', sans-serif; */
+    /* font-family:'latoregular', sans-serif;
+    font-family: 'Maven Pro', sans-serif;
+    font-family:'MavenReg', sans-serif;  */
+    /* font-family:'latobold', sans-serif; */
     }
+
+    .about-us h2{
+      font-size:30px;
+      color:white;
+    }
+
+    .about-us h3{
+      font-size:18px;
+      color: #d7fcf5;
+    }
+    .about-us p{
+      font-size:12px;
+      color:white;
+    }
+
 
     .about-us img{
       width:256px;
@@ -345,6 +377,18 @@ footer {
       margin-right:40px;
       
     }
+
+    .about-us .info{
+      padding-bottom:10px;
+       border-bottom:1px solid rgb(197, 194, 194); 
+       margin-bottom:10px;  
+    }
+    .about-us{
+      border-radius: 2%;
+    }
+
+
+    
     
 
    
