@@ -386,7 +386,7 @@ footer {
     }
 
     canvas {
-      border :1px solid red;
+      border :1px solid rgb(73, 69, 69);
       margin: 0 auto;
     }
      .imgs-container img{

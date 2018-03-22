@@ -7,32 +7,52 @@ var gKeywordCountMap;
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
-    keywords: ['happy', 'koko']
+    keywords: ['matrix', 'funny']
 },
 {
     id: 2,
     url: 'img/meme2.jpg',
-    keywords: ['happy', 'momo']
+    keywords: ['angry', 'funny']
 },
 {
     id: 3,
     url: 'img/meme3.jpg',
-    keywords: ['happy']
+    keywords: ['angry']
 },
 {
     id: 4,
     url: 'img/meme4.jpg',
-    keywords: ['sad']
+    keywords: ['creepy']
 },
 {
     id: 5,
-    url: 'img/meme3.jpg',
-    keywords: ['sad']
+    url: 'img/meme5.jpg',
+    keywords: ['sad','toys']
 },
 {
     id: 6,
-    url: 'img/meme4.jpg',
-    keywords: ['sad']
+    url: 'img/meme6.jpg',
+    keywords: ['confused']
+},
+{
+    id: 7,
+    url: 'img/meme7.jpg',
+    keywords: ['ridiclous']
+},
+{
+    id: 8,
+    url: 'img/meme8.jpg',
+    keywords: ['cartoon']
+},
+{
+    id: 9,
+    url: 'img/meme9.jpg',
+    keywords: ['cartoon', 'angry']
+},
+{
+    id: 10,
+    url: 'img/meme10.jpg',
+    keywords: ['happy']
 }
 ]
 
