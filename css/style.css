@@ -334,7 +334,15 @@ footer {
     .add-line {
       margin-left:10px;
     }
-      
+    
+    .about-us img{
+      width:256px;
+      height:192px;
+      border-radius: 50%;
+    }
+    
+
+   
 
 
      
