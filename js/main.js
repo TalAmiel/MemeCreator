@@ -155,11 +155,19 @@ function renderLines(){
         console.log ('colorddddddd' , txt.color);
         ctx.fillText(txt.line,canvas.width / 2 +align, txt.height);
         console.log ('txt.line' , txt.line);
+       
     })
+    
+    
 }
 
 
-
+//download canvas
+var button = document.getElementById('btn-download');
+button.addEventListener('click', function (e) {
+    var dataURL = canvas.toDataURL('image/png');
+    button.href = dataURL;
+});
 // ctx.fillText(gMeme.txts[id].line,canvas.width / 2, 40);
 //     ctx.fillText(gMeme.txts[id].line,canvas.width/2 , canvas.height-20);
 
