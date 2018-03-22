@@ -334,11 +334,16 @@ footer {
     .add-line {
       margin-left:10px;
     }
-    
+    .about-us{
+    padding:68px;
+    }
+
     .about-us img{
       width:256px;
       height:192px;
       border-radius: 50%;
+      margin-right:40px;
+      
     }
     
 
