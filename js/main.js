@@ -1,7 +1,7 @@
 
 'use strict';
 
-var gCurrImg = '';
+var gCurrImg = {};
 var gKeywordCountMap;
 
 var gImgs = [{
@@ -221,7 +221,6 @@ function changeFont(id, value) {
     renderCanvas();
 }
 
-//doesnt change color
 function changeColor(evt, id) {
     gMeme.txts[id].color = evt.target.value;
     console.log('color 1', gMeme.txts[id].color);
@@ -240,7 +239,19 @@ function replaceMenuActive (elClickLink){
     })
 }
 
-      
+function addImgUrl(url) {
+var newObj =
+{
+    id: 11,
+    url: url,
+    keywords: []
+}
+
+gImgs.push(newObj);
+    console.log ('gImgs' , gImgs);
+    renderImgs(gImgs);
+    renderCanvas();
+} 
 
 function changeAlign(align,id){
     var elAlignBtnLeft = document.querySelector('.align-left');
@@ -304,7 +315,6 @@ function addLine() {
 function renderCanvas() {
     canvas = document.querySelector('canvas');
     ctx = canvas.getContext('2d');
-
     var imageObj = new Image();
     imageObj.src = gCurrImg.url;
     ctx.drawImage(imageObj, 0, 0, canvas.width, canvas.height);

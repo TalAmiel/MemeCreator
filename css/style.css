@@ -124,9 +124,17 @@
   padding:20px;
    }
   @media (max-width: 980px) {
+    .contact-us-container {
+      flex-wrap: wrap;
+
+    }
     .container {
       max-width: 740px; } }
   @media (max-width: 740px) {
+    .contact-us-container {
+      flex-wrap: wrap;
+
+    }
     .container {
       max-width: 100%; } }
 
@@ -394,12 +402,11 @@ footer {
     
     /* contact form */
 
-    .contact-us {
+   
 
-    }
 
     .container-form {
-      max-width:400px;
+      /* max-width:400px; */
       width:100%;
       margin:0 auto;
       /* position:relative; */
