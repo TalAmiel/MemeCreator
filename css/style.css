@@ -171,13 +171,7 @@ header {
   .main-menu a:hover {
     color: #58c93a; }
 
-@media (max-width: 850px){
-  .about-us{
-    flex-direction: column;
-    
-  }
 
-} 
 .show-all-memes {
   padding: 20px;
 }
@@ -201,7 +195,6 @@ header {
 }
 
 .show-all-memes {
-  
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
@@ -212,6 +205,143 @@ header {
     font-size: 20px;
 
 }
+
+.about-us{
+  padding:30px;
+  background-color:rgb(119, 143, 126)
+  
+
+  /* font-family:'MavenReg', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
+  /* font-family:'LatoReg', sans-serif; */
+  /* font-family:'latoregular', sans-serif;
+  font-family: 'Maven Pro', sans-serif;
+  font-family:'MavenReg', sans-serif;  */
+  /* font-family:'latobold', sans-serif; */
+  }
+
+  .about-us h2{
+    font-size:30px;
+    color:white;
+  }
+
+  .about-us h3{
+    font-size:24px;
+    color: #d7fcf5;
+  }
+  .about-us p{
+    font-size:16px;
+    color:white;
+  }
+
+
+  .about-us img{
+    width:256px;
+    height:192px;
+    border-radius: 50%;
+    margin-right:40px;
+    
+  }
+
+  .about-us .info{
+    padding-bottom:10px;
+     border-bottom:1px solid rgb(197, 194, 194); 
+     margin-bottom:10px;  
+  }
+  .about-us{
+    border-radius: 2%;
+  }
+
+
+  
+  
+  /* contact form */
+
+  
+
+  .container-form {
+    /* max-width:400px; */
+    width:100%;
+    margin:0 auto;
+    /* position:relative; */
+  }
+  
+  #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
+  
+  #contact {
+    background:#F9F9F9;
+    padding:25px;
+    /* margin:50px 0; */
+  }
+  
+  #contact h3 {
+    color: #F96;
+    display: block;
+    font-size: 30px;
+    font-weight: 400;
+  }
+  
+  #contact h4 {
+    margin:5px 0 15px;
+    display:block;
+    font-size:13px;
+  }
+  
+  fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+  }
+  
+  #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
+    width:100%;
+    border:1px solid #CCC;
+    background:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+  }
+  
+  #contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
+    -webkit-transition:border-color 0.3s ease-in-out;
+    -moz-transition:border-color 0.3s ease-in-out;
+    transition:border-color 0.3s ease-in-out;
+    border:1px solid #AAA;
+  }
+  
+  #contact textarea {
+    height:100px;
+    max-width:100%;
+    resize:none;
+  }
+  
+  #contact button[type="submit"] {
+    cursor:pointer;
+    width:100%;
+    border:none;
+    background:#0CF;
+    color:#FFF;
+    margin:0 0 5px;
+    padding:10px;
+    font-size:15px;
+  }
+  
+  #contact button[type="submit"]:hover {
+    background:#09C;
+    -webkit-transition:background 0.3s ease-in-out;
+    -moz-transition:background 0.3s ease-in-out;
+    transition:background-color 0.3s ease-in-out;
+  }
+  
+  #contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
+  
+  #contact input:focus, #contact textarea:focus {
+    outline:0;
+    border:1px solid #999;
+  }
+ 
+
 
 
 footer {
@@ -235,11 +365,51 @@ footer {
       
      
     }
+    @media (max-width: 960px) {
+      .meme-page{
+        flex-direction: column; 
+        align-items: center;
+
+      }
+    }
+
+    @media (max-width: 850px){
+      .about-us{
+        flex-direction: column;
+        
+      }
+    
+    } 
+
     @media (max-width: 740px) {
       header{
         height:80px;
         padding-right:30px;
         
+      }
+
+      @media (max-width: 550px) {
+        
+        .grid{
+          grid-gap: 20px;
+      grid-auto-rows: 100%; 
+      
+      
+        }
+
+        header{
+          height:50px;
+        }
+        
+        .main-menu a{
+          font-size: 15px;
+          height:50px;
+          line-height:50px;
+          padding-left:10px;
+          padding-right:10px; 
+          width:100%; 
+        }
+       
       }
       .main-menu a{
         height:80px;
@@ -266,29 +436,7 @@ footer {
     
     
     
-      @media (max-width: 550px) {
-        
-        .grid{
-          grid-gap: 20px;
-      grid-auto-rows: 100%; 
-      
-      
-        }
-
-        header{
-          height:50px;
-        }
-        
-        .main-menu a{
-          font-size: 15px;
-          height:50px;
-          line-height:50px;
-          padding-left:10px;
-          padding-right:10px; 
-          width:100%; 
-        }
-       
-      }
+     
         .image-item{
           /* height:50vh;
           width:100%; */
@@ -300,21 +448,7 @@ footer {
       display:none;
     } 
 
-    .clicked-btn-shadow {
-      border :2px solid lightblue;
-    }
-
-    .clicked-btn-align-right {
-      border :2px solid lightblue;
-    }
-    .clicked-btn-align-center {
-      border :2px solid lightblue;
-    }
-
-    .clicked-btn-align {
-      border :2px solid lightblue;
-    }
-
+    
     canvas {
       border :1px solid rgb(73, 69, 69);
       margin: 0 auto;
@@ -326,7 +460,7 @@ footer {
 
      .meme-options-container{
       padding:20px;
-      width:500px;
+      width:450px;
      }
 
      .line-container{
@@ -348,8 +482,7 @@ footer {
      .meme-page{
        display:none;
        padding:20px;
-       width:450px;
-
+       width:100%;
      }
      
      .meme-page.show{
@@ -365,142 +498,24 @@ footer {
     .text-shadow{
       text-shadow: 2px 1px;
     }
-    
-    .about-us{
-    padding:30px;
-    background-color:rgb(119, 143, 126)
-    
 
-    /* font-family:'MavenReg', sans-serif;
-    font-family: 'Maven Pro', sans-serif;
-    /* font-family:'LatoReg', sans-serif; */
-    /* font-family:'latoregular', sans-serif;
-    font-family: 'Maven Pro', sans-serif;
-    font-family:'MavenReg', sans-serif;  */
-    /* font-family:'latobold', sans-serif; */
+    .clicked-btn-shadow {
+      border :2px solid lightblue;
     }
 
-    .about-us h2{
-      font-size:30px;
-      color:white;
+    .clicked-btn-align-right {
+      border :2px solid lightblue;
+    }
+    .clicked-btn-align-center {
+      border :2px solid lightblue;
     }
 
-    .about-us h3{
-      font-size:24px;
-      color: #d7fcf5;
+    .clicked-btn-align {
+      border :2px solid lightblue;
     }
-    .about-us p{
-      font-size:16px;
-      color:white;
-    }
-
-
-    .about-us img{
-      width:256px;
-      height:192px;
-      border-radius: 50%;
-      margin-right:40px;
-      
-    }
-
-    .about-us .info{
-      padding-bottom:10px;
-       border-bottom:1px solid rgb(197, 194, 194); 
-       margin-bottom:10px;  
-    }
-    .about-us{
-      border-radius: 2%;
-    }
-
 
     
     
-    /* contact form */
-
-    
-
-    .container-form {
-      /* max-width:400px; */
-      width:100%;
-      margin:0 auto;
-      /* position:relative; */
-    }
-    
-    #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea, #contact button[type="submit"] { font:400 12px/16px "Open Sans", Helvetica, Arial, sans-serif; }
-    
-    #contact {
-      background:#F9F9F9;
-      padding:25px;
-      /* margin:50px 0; */
-    }
-    
-    #contact h3 {
-      color: #F96;
-      display: block;
-      font-size: 30px;
-      font-weight: 400;
-    }
-    
-    #contact h4 {
-      margin:5px 0 15px;
-      display:block;
-      font-size:13px;
-    }
-    
-    fieldset {
-      border: medium none !important;
-      margin: 0 0 10px;
-      min-width: 100%;
-      padding: 0;
-      width: 100%;
-    }
-    
-    #contact input[type="text"], #contact input[type="email"], #contact input[type="tel"], #contact input[type="url"], #contact textarea {
-      width:100%;
-      border:1px solid #CCC;
-      background:#FFF;
-      margin:0 0 5px;
-      padding:10px;
-    }
-    
-    #contact input[type="text"]:hover, #contact input[type="email"]:hover, #contact input[type="tel"]:hover, #contact input[type="url"]:hover, #contact textarea:hover {
-      -webkit-transition:border-color 0.3s ease-in-out;
-      -moz-transition:border-color 0.3s ease-in-out;
-      transition:border-color 0.3s ease-in-out;
-      border:1px solid #AAA;
-    }
-    
-    #contact textarea {
-      height:100px;
-      max-width:100%;
-      resize:none;
-    }
-    
-    #contact button[type="submit"] {
-      cursor:pointer;
-      width:100%;
-      border:none;
-      background:#0CF;
-      color:#FFF;
-      margin:0 0 5px;
-      padding:10px;
-      font-size:15px;
-    }
-    
-    #contact button[type="submit"]:hover {
-      background:#09C;
-      -webkit-transition:background 0.3s ease-in-out;
-      -moz-transition:background 0.3s ease-in-out;
-      transition:background-color 0.3s ease-in-out;
-    }
-    
-    #contact button[type="submit"]:active { box-shadow:inset 0 1px 3px rgba(0, 0, 0, 0.5); }
-    
-    #contact input:focus, #contact textarea:focus {
-      outline:0;
-      border:1px solid #999;
-    }
-   
 
       /* .img001 {
       background: url("../images/image-001.jpg");
