@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Meme Creator</title>
     <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body onload="init()">
-    
+
     <header>
         <section class="container header-wrapper flex align-center">
             <div class="logo flex-1">
@@ -21,10 +21,10 @@
             <nav id="mainMenu" class="main-menu-wrapper">
                 <ul class="main-menu clean-list flex align-center">
                     <li>
-                        <a href="#" onclick="replaceMenuActive(this)" class="active">Gallery</a>
+                        <a href="#main-container" onclick="replaceMenuActive(this)" class="active">Gallery</a>
                     </li>
                     <li>
-                        <a  href="#about-us-test" onclick="replaceMenuActive(this)">About</a>
+                        <a href="#about-us-test" onclick="replaceMenuActive(this)">About</a>
                     </li>
                     <li>
                         <a href="#contact-us-test" onclick="replaceMenuActive(this)">Contact</a>
@@ -33,172 +33,194 @@
             </nav>
         </section>
     </header>
-    
+
     <div class="meme-page  flex space-between" id="meme-page-id">
-        <canvas  id="myCanvas" width=500 height=420></canvas>
+        <canvas id="myCanvas" width=500 height=420></canvas>
         </canvas>
         <div class="meme-options-container">
-            <div  class = "top-line line-container flex column space-between" >
-                <div  class="enter-text">
-                        <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="meme top line  "/>
+            <div class="top-line line-container flex column space-between">
+                <div class="enter-text">
+                    <input onkeyup="changeText(event,0)" type="text" class="top-line-text" id="meme-text-top" placeholder="meme top line  " />
                 </div>
                 <div class="line-setup-opts flex space-between">
-                       <div title="Delete top meme" class="delete line" onclick="deleteMemeText(0)" >
-                            <button class="opt-button"><i class="far fa-trash-alt"></i></button>
-                        </div>
-                        <input title="Change color" type="color"  onchange="changeColor(event,0)" class="color-picker">
-                        <div class="change-font-size flex">
-                
-                            <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(0)" >&#128475</button>
-                            <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(0)">&#128474</button>
+                    <div title="Delete top meme" class="delete line" onclick="deleteMemeText(0)">
+                        <button class="opt-button">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <input title="Change color" type="color" onchange="changeColor(event,0)" class="color-picker">
+                    <div class="change-font-size flex">
 
-                        </div >
-                        <div class= "flex move-lines-vertic">
-                                <button title="Move up" onclick="incHeight(0)" class="opt-button-increase-height"><i class="fas fa-arrow-up"></i></button>
-                                <button title="Move down" onclick="decHeight(0)" class="opt-button-decrease-height"><i class="fas fa-arrow-down"></i></button>
-                         </div>
-                        
-                            <select onchange="changeFont(0,this.value)" name="choose-font">
-                              <!-- <option style="display:none" disabled selected value></option> -->
-                              <option value="eurofbold">eurofbold</option>
-                              <option value="Calibri">Calibri</option>
-                              <option value="latobold">latobold</option>
-                            </select>
-                        <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(0)">A</button>
+                        <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(0)">&#128475</button>
+                        <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(0)">&#128474</button>
+
+                    </div>
+                    <div class="flex move-lines-vertic">
+                        <button title="Move up" onclick="incHeight(0)" class="opt-button-increase-height">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <button title="Move down" onclick="decHeight(0)" class="opt-button-decrease-height">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                    </div>
+
+                    <select onchange="changeFont(0,this.value)" name="choose-font">
+                        <!-- <option style="display:none" disabled selected value></option> -->
+                        <option value="eurofbold">eurofbold</option>
+                        <option value="Calibri">Calibri</option>
+                        <option value="latobold">latobold</option>
+                    </select>
+                    <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(this,0)">A</button>
                     <div class="align-text flex justify-end ">
-                        <button title="Align left" class="opt-button align-left" onclick="changeAlign('left',0)"><i class="fas fa-align-left"></i></button>
-                        <button title="Align center" class="opt-button align-center-box" onclick="changeAlign('center',0)"><i class="fas fa-align-center"></i></button>
-                        <button title="Align right" class="opt-button align-right" onclick="changeAlign('right',0)"><i class="fas fa-align-right"></i></button>
-                    </div >
-                    
+                        <button title="Align left" class="opt-button align-left" onclick="changeAlign('left',0)">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button title="Align center" class="opt-button align-center-box" onclick="changeAlign('center',0)">
+                            <i class="fas fa-align-center"></i>
+                        </button>
+                        <button title="Align right" class="opt-button align-right" onclick="changeAlign('right',0)">
+                            <i class="fas fa-align-right"></i>
+                        </button>
+                    </div>
+
                 </div>
             </div>
 
-            <div  class = "bottom-line line-container flex column space-between" >
-                    <div  class="enter-text">
-                            <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-top" placeholder="meme bottom line  "/>
-                    </div>
-                    <div class="line-setup-opts flex space-between">
-                           <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)" >
-                                <button class="opt-button"><i class="far fa-trash-alt"></i></button>
-                            </div>
-                            <input title="Change color" type="color"  onchange="changeColor(event,1)" class="color-picker">
-                            <div class="change-font-size flex">
-                    
-                                <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(1)" >&#128475</button>
-                                <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(1)">&#128474</button>
-    
-                            </div >
-                            <div class= "flex move-lines-vertic">
-                                    <button title="Move up" onclick="incHeight(1)" class="opt-button-increase-height"><i class="fas fa-arrow-up"></i></button>
-                                    <button title="Move down" onclick="decHeight(1)" class="opt-button-decrease-height"><i class="fas fa-arrow-down"></i></button>
-                             </div>
-                            
-                                <select onchange="changeFont(1,this.value)" name="choose-font">
-                                  <!-- <option style="display:none" disabled selected value></option> -->
-                                  <option value="eurofbold">eurofbold</option>
-                                  <option value="Calibri">Calibri</option>
-                                  <option value="latobold">latobold</option>
-                                </select>
-                            <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(1)">A</button>
-                        <div class="align-text flex justify-end ">
-                            <button title="Align left" class="opt-button align-left" onclick="changeAlign('left',1)"><i class="fas fa-align-left"></i></button>
-                            <button title="Align center" class="opt-button align-center-box" onclick="changeAlign('center',1)"><i class="fas fa-align-center"></i></button>
-                            <button title="Align right" class="opt-button align-right" onclick="changeAlign('right',1)"><i class="fas fa-align-right"></i></button>
-                        </div >
-                        
-                    </div>
+            <div class="bottom-line line-container flex column space-between">
+                <div class="enter-text">
+                    <input onkeyup="changeText(event,1)" type="text" class="bottom-line-text" id="meme-text-top" placeholder="meme bottom line  "
+                    />
                 </div>
-                
-                
-            
-            
-            
+                <div class="line-setup-opts flex space-between">
+                    <div title="Delete bottom meme" class="delete line" onclick="deleteMemeText(1)">
+                        <button class="opt-button">
+                            <i class="far fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <input title="Change color" type="color" onchange="changeColor(event,1)" class="color-picker">
+                    <div class="change-font-size flex">
+
+                        <button title="Decrease font size" class="opt-button decrease-font-size" onclick="decreaseFont(1)">&#128475</button>
+                        <button title="increase font size" class="opt-button increase-font-size" onclick="increaseFont(1)">&#128474</button>
+
+                    </div>
+                    <div class="flex move-lines-vertic">
+                        <button title="Move up" onclick="incHeight(1)" class="opt-button-increase-height">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <button title="Move down" onclick="decHeight(1)" class="opt-button-decrease-height">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                    </div>
+
+                    <select onchange="changeFont(1,this.value)" name="choose-font">
+                        <!-- <option style="display:none" disabled selected value></option> -->
+                        <option value="eurofbold">eurofbold</option>
+                        <option value="Calibri">Calibri</option>
+                        <option value="latobold">latobold</option>
+                    </select>
+                    <button title="Toggle shadow" class="opt-button text-shadow" onclick="textShadowToggle(this,1)">A</button>
+                    <div class="align-text flex justify-end ">
+                        <button title="Align left" class="opt-button align-left" onclick="changeAlign('left',1)">
+                            <i class="fas fa-align-left"></i>
+                        </button>
+                        <button title="Align center" class="opt-button align-center-box" onclick="changeAlign('center',1)">
+                            <i class="fas fa-align-center"></i>
+                        </button>
+                        <button title="Align right" class="opt-button align-right" onclick="changeAlign('right',1)">
+                            <i class="fas fa-align-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
             <div class="add-image">
-                    <label onclick="takeImageAddress()" for="imageAddress"><button>add url</button></label>
-                    <input type="text"  id="imageAddress" name="upload-url" placeholder="add URL here..">
+                <label onclick="takeImageAddress()" for="imageAddress">
+                    <button>add Image</button>
+                </label>
+                <input type="text" id="imageAddress" name="upload-url" placeholder="add URL here..">
             </div>
-        <button class="add-line" onclick="addLine()">Add Line</button>
-        <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
+            <button class="add-line" onclick="addLine()">Add Line</button>
+            <a href="#" class="button" id="btn-download" download="my-meme.png">Download</a>
         </div>
-    </div> 
-    <main class="main-container">
-            <div class=searchBar>
-                    <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
-            </div>
-            <div class="imgs-container grid"></div>
-            <div class="keywords">Sort by keywords:
-                <div class="keywords-container"></div>
-                <button class="show-all-memes" onclick="init()">Show all memes</button>
-                <br>
-                <br>
+    </div>
+    <main class="main-container" id="main-container">
+        <div class=searchBar>
+            <input type="text" onkeyup="filterImgs(this)" id="searchBar" name="searchBar" placeholder="Search">
         </div>
-            <div id="about-us-test" class="about-us flex  space-between align-center">
-                <img src="img/co-founders.jpg">
-                <div class="info">
-                        <h2>miZen</h2>
-                        <h3>web development company</h3>
-                        <p>miZen company was established in 2018 by Tal Amiel (CEO) and Omri Zentner (CTO).
-                            Tal comes from the area of management and pshycology and has a phd. in phsychology.
-                            in the past 10 years he was at senior positions at sanDisk company.
-                            Omri worked most of his carreer at Intel company , and there he founded the separtment of AI.
-                            miZen goal is make a simple beutifull web products based on the idea of fibonachhi series.
+        <div class="imgs-container grid"></div>
+        <div class="keywords">Sort by keywords:
+            <div class="keywords-container"></div>
+            <button class="show-all-memes" onclick="init()">Show all memes</button>
+            <br>
+            <br>
+        </div>
+        <div id="about-us-test" class="about-us flex  space-between align-center">
+            <img src="img/co-founders.jpg">
+            <div class="info">
+                <h2>miZen</h2>
+                <h3>web development company</h3>
+                <p>miZen company was established in 2018 by Tal Amiel (CEO) and Omri Zentner (CTO). Tal comes from the area
+                    of management and pshycology and has a phd. in phsychology. in the past 10 years he was at senior positions
+                    at sanDisk company. Omri worked most of his carreer at Intel company , and there he founded the separtment
+                    of AI. miZen goal is make a simple beutifull web products based on the idea of fibonachhi series.
 
-                             </p> 
-                    </div>  
-                </div>
-             </div>
-
-            <section>
-                <div id="contact-us-test" class="contact-us">
-                    <hr>
-                        <section class="container contact-us-container main-wrapper flex space-between justify-center">
-                                <div class="first-panel text-wrapper">
-                    
-                                    <h2>Contact Us</h2>
-                    
-                                    <p>
-                                        Please feel free to contact us for,
-                                        any question
-                                        If you wish to build an amazing web
-                                        App using the
-                                        Latest technolgies out there.
-                                    </p>
-                                    
-                                </div>
-                                <div class="container-form">  
-                                        <form id="contact" action="" method="post">
-                                          <h3>Quick Contact</h3>
-                                          <h4>Contact us today, and get reply with in 24 hours!</h4>
-                                          <fieldset>
-                                            <input placeholder="Your name" type="text" tabindex="1" required >
-                                          </fieldset>
-                                          <fieldset>
-                                            <input placeholder="Your Email Address" type="email" tabindex="2" required>
-                                          </fieldset>
-                                          <fieldset>
-                                            <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
-                                          </fieldset>
-                                          <fieldset>
-                                            <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
-                                          </fieldset>
-                                          <fieldset>
-                                            <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
-                                          </fieldset>
-                                          <fieldset>
-                                            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-                                          </fieldset>
-                                        </form>
-                                       
-                                        
-                                      </div>
-                                </section>
-                    
-                </div>
-            </section>
+                </p>
             </div>
+        </div>
+        </div>
+
+        <section>
+            <div id="contact-us-test" class="contact-us">
+                <hr>
+                <section class="container contact-us-container main-wrapper flex space-between justify-center">
+                    <div class="first-panel text-wrapper">
+                        <h2>Contact Us</h2>
+
+                        <p>
+                            Please feel free to contact us for, any question If you wish to build an amazing web App using the Latest technolgies out
+                            there.
+                        </p>
+
+                    </div>
+                    <div class="container-form">
+                        <form id="contact" action="" method="post">
+                            <h3>Quick Contact</h3>
+                            <h4>Contact us today, and get reply with in 24 hours!</h4>
+                            <fieldset>
+                                <input placeholder="Your name" type="text" tabindex="1" required>
+                            </fieldset>
+                            <fieldset>
+                                <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                            </fieldset>
+                            <fieldset>
+                                <input placeholder="Your Phone Number" type="tel" tabindex="3" required>
+                            </fieldset>
+                            <fieldset>
+                                <input placeholder="Your Web Site starts with http://" type="url" tabindex="4" required>
+                            </fieldset>
+                            <fieldset>
+                                <textarea placeholder="Type your Message Here...." tabindex="5" required></textarea>
+                            </fieldset>
+                            <fieldset>
+                                <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                            </fieldset>
+                        </form>
+
+
+                    </div>
+                </section>
+
+            </div>
+        </section>
+        </div>
     </main>
-    
+
     <footer>
 
         <section class="container">
@@ -208,7 +230,7 @@
             <small>© 2018 Coffee Rights</small>
         </section>
 
-    
+
     </footer>
 
     </script>

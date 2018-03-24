@@ -47,7 +47,7 @@ var gImgs = [{
 {
     id: 9,
     url: 'img/meme9.jpg',
-    keywords: ['cartoon', 'angry','spiderman']
+    keywords: ['cartoon', 'angry', 'spiderman']
 },
 {
     id: 10,
@@ -172,15 +172,15 @@ function renderKeyords(gKeywordCount) {
     console.log('elKeywordsContainer', elKeywordsContainer);
     var strHtml = '';
     for (var key in gKeywordCountMap) {
-        var fontSize = getFontSize (gKeywordCountMap[key]);
-        console.log ('keyyyy' , key , 'gKeywordCount[key]' , gKeywordCountMap[key] );
-        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:'+fontSize+'px";>'+key+'</a>'
+        var fontSize = getFontSize(gKeywordCountMap[key]);
+        console.log('keyyyy', key, 'gKeywordCount[key]', gKeywordCountMap[key]);
+        strHtml += '<a href="#" onclick="filterImgs(this)" style="font-size:' + fontSize + 'px";>' + key + '</a>'
     }
     elKeywordsContainer.innerHTML = strHtml;
 }
 
-function getFontSize(num){
-    return 20+20*num
+function getFontSize(num) {
+    return 20 + 20 * num
 }
 
 
@@ -236,15 +236,15 @@ function replaceMenuActive(elClickLink) {
         else elLink.classList.remove('active');
     })
 }
-function takeImageAddress(){
+function takeImageAddress() {
     var elImageAddress = document.querySelector('#imageAddress');
-    console.log ('url' , elImageAddress.value);
+    console.log('url', elImageAddress.value);
     addImgUrl(elImageAddress.value);
 }
 
 function addImgUrl(url) {
     var newObj =
-        {   
+        {
             url: url,
             keywords: []
         }
@@ -256,12 +256,12 @@ function addImgUrl(url) {
     // renderCanvas();
 }
 
-function getNewID(){
-    var max=0;
-    gImgs.forEach(function (img){
-        if (img.id>max) max = img.id;
+function getNewID() {
+    var max = 0;
+    gImgs.forEach(function (img) {
+        if (img.id > max) max = img.id;
     })
-    return max+1;
+    return max + 1;
 }
 
 function changeAlign(align, id) {
@@ -283,7 +283,7 @@ function changeAlign(align, id) {
     }
     gMeme.txts[id].align = align;
     console.log(gMeme.txts[id].align);
-    
+
     renderCanvas();
 }
 function increaseFont(id) {
@@ -296,8 +296,7 @@ function decreaseFont(id) {
     renderCanvas();
 }
 
-function textShadowToggle(id) {
-    var elShadowBtn = document.querySelector('.text-shadow');
+function textShadowToggle(elShadowBtn, id) {
     console.log('show shdw btn', elShadowBtn);
     elShadowBtn.classList.toggle("clicked-btn-shadow");
     if (!gMeme.txts[id].isShadow) {
@@ -342,23 +341,25 @@ function renderLines() {
         // console.log ('ctx font', ctx.font);
         var align;
         ctx.shadowColor = "black";
-        if (txt.align === 'left'){
-          ctx.textAlign = 'left';
-        ctx.fillText(txt.line, 30 , txt.height);
-    }
+        (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
+        ctx.fillStyle = txt.color;
+        if (txt.align === 'left') {
+            ctx.textAlign = 'left';
+            ctx.fillText(txt.line, 30, txt.height);
+        }
         else if (txt.align === 'right') {
             ctx.textAlign = 'right';
-            ctx.fillText(txt.line, 470 , txt.height);
-        } 
+            ctx.fillText(txt.line, 470, txt.height);
+        }
         else {
             ctx.textAlign = 'center';
             ctx.fillText(txt.line, canvas.width / 2, txt.height);
-        } 
+        }
         console.log('align', align);
-        (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
-        ctx.fillStyle = txt.color;
-        console.log('colorddddddd', txt.color);
         
+        console.log('colorddddddd', txt.color);
+        console.log ('txt is shadow' , txt.isShadow);
+
         console.log('txt.line', txt.line);
 
     })
@@ -380,10 +381,10 @@ button.addEventListener('click', function (e) {
 
 function deleteMemeText(idx) {
     var txts = gMeme.txts;
-    var elText='';
-    console.log ('mmmmmmmm');
-    if (idx === 0)  elText = document.querySelector('.top-line-text');
-    else  elText = document.querySelector('.bottom-line-text');
+    var elText = '';
+    console.log('mmmmmmmm');
+    if (idx === 0) elText = document.querySelector('.top-line-text');
+    else elText = document.querySelector('.bottom-line-text');
     elText.value = '';
     txts[idx].line = '';
     renderCanvas();
