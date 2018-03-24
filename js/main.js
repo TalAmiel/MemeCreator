@@ -126,6 +126,16 @@ function renderLines() {
         ctx.shadowColor = "black";
         (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
         ctx.fillStyle = txt.color;
+        if (txt.align === 'left') {
+            ctx.textAlign = 'right';
+            // ctx.fillText(txt.line, 30, txt.height);
+         }
+        else if (txt.align === 'right') {
+            ctx.textAlign = 'left';
+        }
+        else {
+            ctx.textAlign = 'center';
+        }
         textLength = (txt.line.length * txt.size) / 2;
         ctx.fillText(txt.line, txt.x, txt.y);
     })
