@@ -1,9 +1,17 @@
 
 'use strict';
 
+var WIDTH_CANVAS = 500;
+var HEIGHT_CANVAS = 420;
+var dragOK = false;
+var canvas;
+var ctx;
+
+
+var gcurrTextDragIdx;
 var gCurrImg = {};
 var gKeywordCountMap;
-
+var textLength;
 var gImgs = [{
     id: 1,
     url: 'img/meme1.jpg',
@@ -62,18 +70,24 @@ var gMeme = {
         {
             line: '',
             size: 60,
-            height: 40,
+            width: 210,
+            height: 50,
             align: 'center',
             color: 'black',
+            x: 210,
+            y: 50,
             isShadow: false,
             font: 'eurofbold',
         },
         {
             line: '',
             size: 60,
-            height: 350,
+            height: 400,
+            width: 210,
             align: 'center',
             color: 'black',
+            x: 210,
+            y: 400,
             isShadow: false,
             font: 'Calibri',
         },
@@ -81,15 +95,105 @@ var gMeme = {
     ]
 }
 
-var canvas;
-var ctx;
 
 function init() {
+    initCanvas();
+    canvas.onmousedown = myDown;
+    canvas.onmouseup = myUp;
     var flatened = flatten(gImgs);
     gKeywordCountMap = findModes(flatened);
     renderImgs(gImgs);
     renderKeyords();
 }
+//##################################################3
+// ######for dragging txts on the canvas######
+
+
+function renderCanvas() {
+    canvas = document.querySelector('canvas');
+    ctx = canvas.getContext('2d');
+    var imageObj = new Image();
+    imageObj.src = gCurrImg.url;
+    ctx.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
+    renderLines();
+}
+
+function renderLines() {
+    var txts = gMeme.txts;
+    txts.forEach(function renderLine(txt) {
+        ctx.font = txt.size + 'px ' + txt.font;
+        var align;
+        ctx.shadowColor = "black";
+        (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
+        ctx.fillStyle = txt.color;
+        textLength = (txt.line.length * txt.size) / 2;
+        ctx.fillText(txt.line, txt.x, txt.y);
+    })
+
+}
+
+
+
+
+
+function clear() {
+    ctx.clearRect(0, 0, WIDTH_CANVAS, HEIGHT_CANVAS);
+}
+
+function initCanvas() {
+    canvas = document.querySelector("canvas");
+    ctx = canvas.getContext('2d');
+    console.log('toto');
+    return setInterval(draw, 10);
+}
+
+function draw() {
+
+    clear();
+
+    //  ctx.fillStyle = "#FAF7F8";
+    //  ctx.fillStyle = "#444444";
+    var imageObj = new Image();
+    imageObj.src = gCurrImg.url;
+    ctx.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
+
+    renderLines();
+    // ctx.fillText("Hey there im a movin!!", x, y);
+
+}
+
+function myMove(e) {
+    if (dragOK) {
+        var txts = gMeme.txts;
+        txts[gcurrTextDragIdx].x = e.pageX - canvas.offsetLeft;
+        txts[gcurrTextDragIdx].y = e.pageY - canvas.offsetTop;
+    }
+}
+
+function myDown(e) {
+    var txts = gMeme.txts;
+    for (var i = 0; i < txts.length; i++) {
+        var txt = txts[i];
+        var textLength = (txt.line.length * txt.size) / 2;
+        //check if the mouse is on the word
+        if (e.pageX + 20 < txt.x + textLength + canvas.offsetLeft && e.pageX + 20 > txt.x - textLength + canvas.offsetLeft && e.pageY + 20 < txt.y + 15 + canvas.offsetTop &&
+            e.pageY + 20 > txt.y - 15 + canvas.offsetTop) {
+
+            gcurrTextDragIdx = i;
+            dragOK = true;
+            canvas.onmousemove = myMove;
+            break;
+        }
+    }
+}
+
+function myUp() {
+    console.log('myup');
+    dragOK = false;
+    canvas.onmousemove = null;
+}
+
+// ###############################################################
 
 
 function renderImgs(imgs) {
@@ -133,7 +237,6 @@ function imgSelected(id) {
         console.log('id', id);
         return img.id === id;
     })
-    showMemePage();
     var elMemePage = document.querySelector('.meme-page');
     elMemePage.classList.add('show');
 }
@@ -184,46 +287,26 @@ function getFontSize(num) {
 }
 
 
-
-function showMemePage() {
-    //add class
-    renderCanvas();
-}
-
-
-// function toggle_visibility(id) {
-//     var e = document.getElementById(id);
-//     if(e.style.border == '1px solid red';
-//        e.style.display = 'none';
-//     else
-//        e.style.display = 'block';
-//  }
-
 function incHeight(id) {
-    gMeme.txts[id].height -= 5;
-    renderCanvas();
+    gMeme.txts[id].y -= 5;
 }
 
 function decHeight(id) {
-    gMeme.txts[id].height += 5;
-    renderCanvas();
+    gMeme.txts[id].y += 5;
 }
 
 function changeText(evt, id) {
     gMeme.txts[id].line = evt.target.value;
-    renderCanvas();
 }
 
 function changeFont(id, value) {
     gMeme.txts[id].font = value;
-    renderCanvas();
 }
 
 function changeColor(evt, id) {
     gMeme.txts[id].color = evt.target.value;
     console.log('color 1', gMeme.txts[id].color);
     console.log('txt', gMeme.txts)
-    renderCanvas();
 }
 
 function replaceMenuActive(elClickLink) {
@@ -253,7 +336,6 @@ function addImgUrl(url) {
     console.log('gImgs', gImgs);
     renderImgs(gImgs);
     imgSelected(newObj.id)
-    // renderCanvas();
 }
 
 function getNewID() {
@@ -283,17 +365,21 @@ function changeAlign(align, id) {
     }
     gMeme.txts[id].align = align;
     console.log(gMeme.txts[id].align);
+    // since we do iteration on render canvas  we do not need the rendercanvas
+    // after each change 
 
-    renderCanvas();
+    // renderCanvas();
 }
 function increaseFont(id) {
     gMeme.txts[id].size += 2;
-    renderCanvas();
+
 }
 function decreaseFont(id) {
     gMeme.txts[id].size -= 2;
-    console.log('moshe');
-    renderCanvas();
+    // since we do iteration on render canvas  we do not need the rendercanvas
+    // after each change 
+
+    // renderCanvas();
 }
 
 function textShadowToggle(elShadowBtn, id) {
@@ -305,7 +391,6 @@ function textShadowToggle(elShadowBtn, id) {
     } else {
         gMeme.txts[id].isShadow = false;
     }
-    renderCanvas();
 }
 
 function addLine() {
@@ -322,49 +407,39 @@ function addLine() {
     console.log('gMeme.txts', gMeme.txts);
 }
 
-function renderCanvas() {
-    canvas = document.querySelector('canvas');
-    ctx = canvas.getContext('2d');
-    var imageObj = new Image();
-    imageObj.src = gCurrImg.url;
-    ctx.drawImage(imageObj, 0, 0, canvas.width, canvas.height);
-    renderMeme();
-}
 
-function renderMeme() {
-    renderLines();
-}
-function renderLines() {
-    var txts = gMeme.txts;
-    txts.forEach(function renderLine(txt) {
-        ctx.font = txt.size + 'px ' + txt.font;
-        // console.log ('ctx font', ctx.font);
-        var align;
-        ctx.shadowColor = "black";
-        (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
-        ctx.fillStyle = txt.color;
-        if (txt.align === 'left') {
-            ctx.textAlign = 'left';
-            ctx.fillText(txt.line, 30, txt.height);
-        }
-        else if (txt.align === 'right') {
-            ctx.textAlign = 'right';
-            ctx.fillText(txt.line, 470, txt.height);
-        }
-        else {
-            ctx.textAlign = 'center';
-            ctx.fillText(txt.line, canvas.width / 2, txt.height);
-        }
-        console.log('align', align);
-        
-        console.log('colorddddddd', txt.color);
-        console.log ('txt is shadow' , txt.isShadow);
+//old renderlines before we use drag method
+// function renderLines() {
+//     var txts = gMeme.txts;
+//     txts.forEach(function renderLine(txt) {
+//         ctx.font = txt.size + 'px ' + txt.font;
+//         // console.log ('ctx font', ctx.font);
+//         var align;
+//         ctx.shadowColor = "black";
+//         (txt.isShadow) ? ctx.shadowBlur = 15 : ctx.shadowBlur = 0;
+//         ctx.fillStyle = txt.color;
+//         if (txt.align === 'left') {
+//             ctx.textAlign = 'left';
+//             ctx.fillText(txt.line, 30, txt.height);
+//         }
+//         else if (txt.align === 'right') {
+//             ctx.textAlign = 'right';
+//             ctx.fillText(txt.line, 470, txt.height);
+//         }
+//         else {
+//             ctx.textAlign = 'center';
+//             ctx.fillText(txt.line, canvas.width / 2, txt.height);
+//         }
+//         console.log('align', align);
 
-        console.log('txt.line', txt.line);
+//         console.log('colorddddddd', txt.color);
+//         console.log ('txt is shadow' , txt.isShadow);
 
-    })
+//         console.log('txt.line', txt.line);
 
-}
+//     })
+
+// }
 
 
 //download canvas
@@ -373,11 +448,7 @@ button.addEventListener('click', function (e) {
     var dataURL = canvas.toDataURL('image/png');
     button.href = dataURL;
 });
-// ctx.fillText(gMeme.txts[id].line,canvas.width / 2, 40);
-//     ctx.fillText(gMeme.txts[id].line,canvas.width/2 , canvas.height-20);
-
-
-
+ctx.fillText(gMeme.txts[id].line, canvas.width / 2, canvas.height - 20);
 
 function deleteMemeText(idx) {
     var txts = gMeme.txts;
@@ -387,39 +458,7 @@ function deleteMemeText(idx) {
     else elText = document.querySelector('.bottom-line-text');
     elText.value = '';
     txts[idx].line = '';
-    renderCanvas();
+    gMeme.txts[idx].y = gMeme.txts[idx].height;
+    gMeme.txts[idx].x = gMeme.txts[idx].width;
 }
-
-// function deleteBottomMemeText(idx) {
-//     var txts = gMeme.txts;
-//     var elTextTop = document.querySelector('.bottom-line-text');
-//     elTextTop.value = '';
-//     txts[idx].line = '';
-//     renderCanvas();
-// }
-
-//TODO: create init
-
-
-
-
-//flattens the object by keywords only
-
-
-
-
-
-
-
-// function drawImage(imageObj) {
-//     var x = 0;
-//     var y = 0;
-//     console.log('canvas',canvas.width);
-//     ctx.drawImage(imageObj, 0, 0,canvas.width,canvas.height);
-// }
-
-
-
-
-
 
